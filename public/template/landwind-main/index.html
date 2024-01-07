@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Velocity Co</title>
+    <title>Landwind - Tailwind CSS Landing Page Demo</title>
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.bunny.net">
@@ -36,14 +36,14 @@
     <meta name="twitter:creator" content="@themesberg" />
 
     <!-- Favicon -->
-    <link rel="apple-touch-icon" sizes="180x180" href="{{ asset('template/landwind-main/images/Black Pink Bold Elegant Monogram Personal Brand Logo(2).svg') }}">
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="icon" type="image/png" sizes="32x32" href="{{ asset('template/landwind-main/images/Black Pink Bold Elegant Monogram Personal Brand Logo(2).svg') }}">
-    <link rel="icon" type="image/png" sizes="16x16" href="{{ asset('template/landwind-main/images/Black Pink Bold Elegant Monogram Personal Brand Logo(2).svg') }}">
-    <link rel="manifest" href="{{ asset('template/landwind-main/site.webmanifest') }}">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="manifest" href="/site.webmanifest">
     <meta name="msapplication-TileColor" content="#da532c">
     <meta name="theme-color" content="#ffffff">
-    <link href="{{ asset('template/landwind-main/output.css') }}" rel="stylesheet">
+    <link href="./output.css" rel="stylesheet">
     <script async defer src="https://buttons.github.io/buttons.js"></script>
 </head>
 <body>
@@ -51,9 +51,24 @@
         <nav class="bg-white border-gray-200 py-2.5 dark:bg-gray-900">
             <div class="flex flex-wrap items-center justify-between max-w-screen-xl px-4 mx-auto">
                 <a href="#" class="flex items-center">
-                    <img src="{{ asset('template/landwind-main/images/Black Pink Bold Elegant Monogram Personal Brand Logo(2).svg') }}" alt="VelocityCo logo" />
+                    <img src="images\Black Pink Bold Elegant Monogram Personal Brand Logo(2).svg" alt="VelocityCo logo" />
                     <!-- <span class="self-center text-xl font-semibold whitespace-nowrap dark:text-white">Velocity Co</span> -->
                 </a>
+
+
+                @if (Route::has('login'))
+                <div class="sm:fixed sm:top-0 sm:right-0 p-6 text-right z-10">
+                    @auth
+                        <a href="{{ url('/dashboard') }}" class="font-semibold text-gray-600 hover:text-gray-900 focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500">Dashboard</a>
+                    @else
+                        <a href="{{ route('login') }}" class="font-semibold text-gray-600 hover:text-gray-900 focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500">Log in</a>
+
+                        @if (Route::has('register'))
+                            <a href="{{ route('register') }}" class="ml-4 font-semibold text-gray-600 hover:text-gray-900 focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500">Register</a>
+                        @endif
+                    @endauth
+                </div>
+            @endif
 
 
                 <div class="items-center justify-between hidden w-full lg:flex lg:w-auto lg:order-1" id="mobile-menu-2">
@@ -76,22 +91,6 @@
                         <li>
                             <a href="#" class="block py-2 pl-3 pr-4 text-gray-700 border-b border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 lg:hover:text-purple-700 lg:p-0 dark:text-gray-400 lg:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white lg:dark:hover:bg-transparent dark:border-gray-700">Contact Us</a>
                         </li>
-                        <li>
-                        @if (Route::has('login'))
-                        @auth
-                        <a href="{{ url('/dashboard') }}" class="font-semibold text-gray-600 hover:text-gray-900 focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500">Dashboard</a>
-                        </li>
-                        <li>
-                        @else
-                        <a href="{{ route('login') }}" class="font-semibold text-gray-600 hover:text-gray-900 focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500">Log in</a>
-                        </li>
-                        <li>
-                        @if (Route::has('register'))
-                        <a href="{{ route('register') }}" class="ml-4 font-semibold text-white hover:text-white focus:outline-none focus:ring-2 focus:ring-purple-600 focus:ring-opacity-50 rounded-full px-4 py-2 transition ease-in duration-200 text-center" style="background-color: #5521b5;">Register</a>
-                        @endif
-                        @endauth
-                        @endif    
-                        </li>
                         
                     </ul>
                 </div>
@@ -103,11 +102,12 @@
     <section class="bg-white dark:bg-gray-900">
         <div class="grid max-w-screen-xl px-4 pt-20 pb-8 mx-auto lg:gap-8 xl:gap-0 lg:py-16 lg:grid-cols-12 lg:pt-28">
             <div class="mr-auto place-self-center lg:col-span-7">
-                <h1 class="max-w-2xl mb-4 text-4xl font-extrabold leading-none tracking-tight md:text-5xl xl:text-6xl dark:text-black">Quality cars,<br>unbeatable prices</h1>
+                <h1 class="max-w-2xl mb-4 text-4xl font-extrabold leading-none tracking-tight md:text-5xl xl:text-6xl dark:text-white">Quality cars,<br>unbeatable prices</h1>
                 <p class="max-w-2xl mb-6 font-light text-gray-500 lg:mb-8 md:text-lg lg:text-xl dark:text-gray-400">We offer the best car dealerships in the country, providing unmatched service and a vast selection to suit every customer's needs. Get affordable cars at a phenomenal price and drive home with unbeatable savings.</p>
+                
             </div>
             <div class="hidden lg:mt-0 lg:col-span-5 lg:flex">
-                <img src="{{ asset('template/landwind-main/images/Blue and Orange Illustration Sports Car T-Shirt (1064 x 832 px)(1).png') }}" alt="hero image">
+                <img src="./images/Blue and Orange Illustration Sports Car T-Shirt (1064 x 832 px)(1).png" alt="hero image">
             </div>
         </div>
     </section>
@@ -118,23 +118,23 @@
             <div class="grid grid-cols-2 gap-8 text-gray-500 sm:gap-12 sm:grid-cols-3 lg:grid-cols-6 dark:text-gray-400">
                 <!--Icons for brands-->
                 <a href="#" class="flex items-center lg:justify-center">
-                    <img src="{{ asset('template/landwind-main/images/2.svg') }}" alt="image 1" class="hover:shadow-lg">
+                    <img src="images/2.svg" alt="image 1" class="hover:shadow-lg">
                 </a>
                 <a href="#" class="flex items-center lg:justify-center">
-                    <img src="{{ asset('template/landwind-main/images/3.svg') }}" alt="image 2" class="hover:shadow-lg">
+                    <img src="images/3.svg" alt="image 2" class="hover:shadow-lg">
                 </a>
                 <a href="#" class="flex items-center lg:justify-center">
-                    <img src="{{ asset('template/landwind-main/images/4.svg') }}" alt="image 3" class="hover:shadow-lg">
+                    <img src="images/4.svg" alt="image 3" class="hover:shadow-lg">
                 </a>
     
                 <a href="#" class="flex items-center lg:justify-center">
-                    <img src="{{ asset('template/landwind-main/images/5.svg') }}" alt="image 4" class="hover:shadow-lg">
+                    <img src="images/5.svg" alt="image 4" class="hover:shadow-lg">
                 </a>
                 <a href="#" class="flex items-center lg:justify-center">
-                    <img src="{{ asset('template/landwind-main/images/6.svg') }}" alt="image 5" class="hover:shadow-lg">
+                    <img src="images/6.svg" alt="image 5" class="hover:shadow-lg">
                 </a>
                 <a href="#" class="flex items-center lg:justify-center">
-                    <img src="{{ asset('template/landwind-main/images/tesla1.svg') }}" alt="image 6" class="hover:shadow-lg">
+                    <img src="images/tesla1.svg" alt="image 6" class="hover:shadow-lg">	
                 </a>
             </div>
         </div>
@@ -168,11 +168,11 @@
                     </ul>
                     <p class="mb-8 font-light lg:text-xl">Explore the world of cars effortlessly, with features that enhance your journey and make finding the perfect vehicle a pleasure</p>
                 </div>
-                <img class="hidden w-full mb-4 rounded-lg lg:mb-0 lg:flex" src="{{ asset('template/landwind-main/images/Group 1000004159.png') }}" alt="dashboard feature image">
+                <img class="hidden w-full mb-4 rounded-lg lg:mb-0 lg:flex" src="./images/Group 1000004159.png" alt="dashboard feature image">
             </div>
             <!-- Row -->
             <div class="items-center gap-8 lg:grid lg:grid-cols-2 xl:gap-16">
-                <img class="hidden w-full mb-4 rounded-lg lg:mb-0 lg:flex" src="{{ asset('template/landwind-main/images/Group 1000004160(1).png') }}" alt="feature image 2">
+                <img class="hidden w-full mb-4 rounded-lg lg:mb-0 lg:flex" src="./images/Group 1000004160(1).png" alt="feature image 2">
                 <div class="text-gray-500 sm:text-lg dark:text-gray-400">
                     <h2 class="mb-4 text-3xl font-extrabold tracking-tight text-gray-900 dark:text-white">Selling Your Car Has Never Been Easier!</h2>
                     <p class="mb-8 font-light lg:text-xl">Whether you're upgrading, downsizing, or simply ready for a change, our platform provides a hassle-free solution to sell your vehicle quickly and efficiently.</p>
@@ -210,23 +210,23 @@
             <div class="col-span-2 space-y-8 md:grid md:grid-cols-2 md:gap-12 md:space-y-0">
                 <div>
                     <svg class="w-10 h-10 mb-2 text-purple-600 md:w-12 md:h-12 dark:text-purple-500" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M2 5a2 2 0 012-2h12a2 2 0 012 2v2a2 2 0 01-2 2H4a2 2 0 01-2-2V5zm14 1a1 1 0 11-2 0 1 1 0 012 0zM2 13a2 2 0 012-2h12a2 2 0 012 2v2a2 2 0 01-2 2H4a2 2 0 01-2-2v-2zm14 1a1 1 0 11-2 0 1 1 0 012 0z" clip-rule="evenodd"></path></svg>
-                    <h3 class="mb-2 text-2xl font-bold dark:text-black">30+ dealerships <br>from around the country</h3>
-                    <p class="font-light text-gray-500 dark:text-gray-400">Choose the vehicle just for you from dealerships all over the country.</p>
+                    <h3 class="mb-2 text-2xl font-bold dark:text-white">99.99% uptime</h3>
+                    <p class="font-light text-gray-500 dark:text-gray-400">For Landwind, with zero maintenance downtime</p>
                 </div>
                 <div>
                     <svg class="w-10 h-10 mb-2 text-purple-600 md:w-12 md:h-12 dark:text-purple-500" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M9 6a3 3 0 11-6 0 3 3 0 016 0zM17 6a3 3 0 11-6 0 3 3 0 016 0zM12.93 17c.046-.327.07-.66.07-1a6.97 6.97 0 00-1.5-4.33A5 5 0 0119 16v1h-6.07zM6 11a5 5 0 015 5v1H1v-1a5 5 0 015-5z"></path></svg>
-                    <h3 class="mb-2 text-2xl font-bold dark:text-black">Customers</h3>
-                    <p class="font-light text-gray-500 dark:text-gray-400">Trusted by many in Sri Lanka.</p>
+                    <h3 class="mb-2 text-2xl font-bold dark:text-white">600M+ Users</h3>
+                    <p class="font-light text-gray-500 dark:text-gray-400">Trusted by over 600 milion users around the world</p>
                 </div>
                 <div>
                     <svg class="w-10 h-10 mb-2 text-purple-600 md:w-12 md:h-12 dark:text-purple-500" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM4.332 8.027a6.012 6.012 0 011.912-2.706C6.512 5.73 6.974 6 7.5 6A1.5 1.5 0 019 7.5V8a2 2 0 004 0 2 2 0 011.523-1.943A5.977 5.977 0 0116 10c0 .34-.028.675-.083 1H15a2 2 0 00-2 2v2.197A5.973 5.973 0 0110 16v-2a2 2 0 00-2-2 2 2 0 01-2-2 2 2 0 00-1.668-1.973z" clip-rule="evenodd"></path></svg>
-                    <h3 class="mb-2 text-2xl font-bold dark:text-black">20+ brands</h3>
-                    <p class="font-light text-gray-500 dark:text-gray-400">From Japanese to German manufactured vehicles, get yours now with Velocity Co!</p>
+                    <h3 class="mb-2 text-2xl font-bold dark:text-white">100+ countries</h3>
+                    <p class="font-light text-gray-500 dark:text-gray-400">Have used Landwind to create functional websites</p>
                 </div>
                 <div>
                     <svg class="w-10 h-10 mb-2 text-purple-600 md:w-12 md:h-12 dark:text-purple-500" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M3 1a1 1 0 000 2h1.22l.305 1.222a.997.997 0 00.01.042l1.358 5.43-.893.892C3.74 11.846 4.632 14 6.414 14H15a1 1 0 000-2H6.414l1-1H14a1 1 0 00.894-.553l3-6A1 1 0 0017 3H6.28l-.31-1.243A1 1 0 005 1H3zM16 16.5a1.5 1.5 0 11-3 0 1.5 1.5 0 013 0zM6.5 18a1.5 1.5 0 100-3 1.5 1.5 0 000 3z"></path></svg>
-                    <h3 class="mb-2 text-2xl font-bold dark:text-black">Seamless Experience</h3>
-                    <p class="font-light text-gray-500 dark:text-gray-400">With our interactive UI design, it will make your car-shopping experience much more engaging and intuitive.</p>
+                    <h3 class="mb-2 text-2xl font-bold dark:text-white">5+ Million</h3>
+                    <p class="font-light text-gray-500 dark:text-gray-400">Transactions per day</p>
                 </div>
             </div>
         </div>
@@ -574,4 +574,3 @@
     <script src="https://unpkg.com/flowbite@1.4.1/dist/flowbite.js"></script>
 </body>
 </html>
-
