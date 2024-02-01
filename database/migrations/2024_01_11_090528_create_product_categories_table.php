@@ -13,17 +13,34 @@ return new class extends Migration
     {
         Schema::create('product_categories', function (Blueprint $table) {
             $table->id();
+
+
             $table->timestamps();
+
+
             $table->string('name')->unique();
+
+
             $table->string('slug')->unique();
+
+
             $table->longText('description')->nullable();
-            $table->unsignedBigInteger('parent_id')->nullable();
+
+
+            $table->foreignId('parent_id')->nullable();
+
+
             $table->boolean('status')->default(true);
+
+
             $table->string('image')->nullable();
+
             $table->string('meta_title')->nullable();
+
             $table->longText('meta_description')->nullable();
-            $table->longText('meta_keywords')->nullable();
             
+            $table->longText('meta_keywords')->nullable();
+
         });
     }
 

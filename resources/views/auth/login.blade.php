@@ -15,11 +15,11 @@
             overflow: hidden;
         }
         .container {
+         transform: translateY(-40px);
          background-color: rgba(255, 255, 255, 0.6); /* white background with 50% opacity */
          border-radius: 10px; /* rounded corners */
-         max-width: 60%; /* not covering the full page in width */
-         max-height: 40%; /* not covering the full page in height */
-         margin: auto; /* center the box */
+         max-width: 60%; /* not covering the full page in width */ 
+         margin-top: 0px; /* center the box */
          padding: 20px; /* space around the content */
          /* other styles */
      }
@@ -35,9 +35,9 @@
     color: #9061f9;
     -webkit-text-fill-color: black;
    }
-   .checkbox-wrap .checkbox-primary label {
+   .checkbox-wrap .checkbox-primary label a{
     color: white;
- }
+ }  
 
  .checkbox-wrap input[type="checkbox"] {
     background-color: black;
@@ -48,9 +48,7 @@
 <section class="ftco-section">
     <div class="container">
         <div class="row justify-content-center">
-            <div class="col-md-6 text-center mb-5">
                 <img src="{{ asset('template/landwind-main/images/logo2.png') }}" alt="logo" width="200px" height="200px" class="heading-section">
-            </div>
         </div>
         <div class="row justify-content-center">
             <div class="col-md-6 col-lg-4">
