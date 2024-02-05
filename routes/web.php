@@ -1,6 +1,9 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use Illuminate\Http\Request;
+use App\Http\Controllers\VehicleController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -37,4 +40,11 @@ Route::middleware([
         'user',
          App\Http\Controllers\UserController::class
         );
+
+        Route::resource(
+            'vehicle-categories',
+            App\Http\Controllers\VehicleCategoryController::class
+            );
+        Route::get('/vehicles/create', [VehicleController::class, 'create'])->name('vehicle.create');
+
 });

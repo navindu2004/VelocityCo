@@ -100,11 +100,6 @@
                                 {{ __('Manage Products') }}
                             </div>
 
-                            <x-dropdown-link href="{{  route('product-category.index')  }}">
-                                {{ __('Categories') }}
-                            </x-dropdown-link>
-
-
                             <div class="border-t border-gray-200"></div>
 
                             <!-- Authentication -->
@@ -151,6 +146,9 @@
 
                             <x-dropdown-link href="{{ route('profile.show') }}">
                                 {{ __('Profile') }}
+                            </x-dropdown-link>
+                            <x-dropdown-link href="{{ route('vehicle-categories.index') }}">
+                                {{ __('Vehicle Categories') }}
                             </x-dropdown-link>
 
 
