@@ -100,6 +100,10 @@
                                 {{ __('Manage Products') }}
                             </div>
 
+                            <x-dropdown-link href="{{ route('vehicle-categories.index') }}">
+                                {{ __('Vehicle Categories') }}
+                            </x-dropdown-link>
+
                             <div class="border-t border-gray-200"></div>
 
                             <!-- Authentication -->
