@@ -103,19 +103,24 @@
 =======
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Vehicle Categories') }}
+            {{ __('Vehicles') }}
         </h2>
     </x-slot>
 
-    <div class="py-12">
-        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
-                <div class="p-6 bg-white border-b border-gray-200">
-                    <div class="mb-6 text-right">
-                        <a href="{{ route('vehicle-categories.create') }}" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
-                            Add New Category
-                        </a>
-                    </div>
+    <div class="container mx-auto mt-1">
+        <div class="px-4 sm:px-6 lg:px-8 bg-white pt-4">
+            <div class="sm:flex sm:items-center">
+                <div class="sm:flex-auto">
+                    <h1 class="text-base font-semibold leading-6 text-gray-900">Vehicles</h1>
+                    <p class="mt-2 text-sm text-gray-700">A list of all the vehicles in your account including their details like number, owner, and status.</p>
+                </div>
+                <div class="mt-4 sm:mt-0 sm:ml-16 sm:flex-none">
+                    <a href="{{ route('vehicle.create') }}"
+                       class="inline-flex items-center rounded-md border border-transparent bg-indigo-600 px-3 py-2 text-sm font-semibold leading-4 text-white shadow-sm hover:bg-indigo-500 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2">
+                        Create Vehicle
+                    </a>
+                </div>
+            </div>
 
                     <table class="min-w-full">
                         <thead class="bg-gray-50">
@@ -158,10 +163,12 @@
                     <!-- Pagination -->
                     <div class="mt-4">
                         {{ $categories->links() }}
->>>>>>> 537b8f8ffa1d6a01668d5310b4a8492aa77488dc
                     </div>
                 </div>
             </div>
+            <!-- End Vehicle Table -->
+
+            {{ $vehicleCategories->links() }}
         </div>
 
       

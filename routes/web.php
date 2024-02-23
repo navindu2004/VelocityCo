@@ -1,10 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
 use Illuminate\Http\Request;
-
-Use App\Http\Controllers\VehicleCategoryController;
+use App\Http\Controllers\VehicleController;
 
 
 /*
@@ -33,7 +31,10 @@ Route::middleware([
         return view('dashboard');
     })->name('dashboard');
 
-
+    Route::resource(
+        'product-category',
+         App\Http\Controllers\ProductCategoryController::class
+        );
 
     Route::resource(
         'user',
@@ -42,6 +43,8 @@ Route::middleware([
 
 
         Route::resource('vehicle-categories', VehicleCategoryController::class);
+
+
 
 
 });
