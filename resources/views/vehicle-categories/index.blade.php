@@ -1,5 +1,4 @@
 <x-app-layout>
-<<<<<<< HEAD
 
     <div class="container mx-auto mt-1">
 
