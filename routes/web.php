@@ -40,21 +40,8 @@ Route::middleware([
          App\Http\Controllers\UserController::class
         );
 
-<<<<<<< HEAD
-    Route::resource('vehicle', VehicleController::class);
-
-        Route::resource(
-            'vehicle-categories',
-            App\Http\Controllers\VehicleCategoryController::class
-            );
-            
-        Route::get('/vehicles/create', [VehicleController::class, 'create'])->name('vehicle.create');
-=======
 
         Route::resource('vehicle-categories', VehicleCategoryController::class);
 
-
-
->>>>>>> 537b8f8ffa1d6a01668d5310b4a8492aa77488dc
 
 });
