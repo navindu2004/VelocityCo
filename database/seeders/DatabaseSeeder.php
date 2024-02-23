@@ -23,12 +23,12 @@ class DatabaseSeeder extends Seeder
                 'password' => bcrypt('admin'),
                 'role' => 1,
             ]);
-        
 
-            $this->call([
-                VehicleSeeder::class,
+            $this -> call([
                 VehicleCategorySeeder::class,
             ]);
+
+
 
     }
 }
