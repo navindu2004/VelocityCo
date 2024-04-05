@@ -11,6 +11,7 @@ class Vehicle extends Model
 
     protected $fillable = [
         'category_id',
+        'brand_id',
         'name',
         'model',
         'year',
@@ -22,11 +23,4 @@ class Vehicle extends Model
         'purchase_price',
         'status'
     ];
-
-    public function category()
-    {
-        return $this->belongsTo(VehicleCategory::class);
-    }
-    
-    
 }

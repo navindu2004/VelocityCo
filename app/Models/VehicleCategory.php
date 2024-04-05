@@ -10,8 +10,14 @@ class VehicleCategory extends Model
     use HasFactory;
 
     protected $fillable = [
-        'name',
-        'description',
-        'status',
+        'vehicle_category_name',
+        'brand',
+        'model',
+        'year',
+        'color',
+        'plate_number',
+        'price',
+
+
     ];
 }
