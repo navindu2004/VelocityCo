@@ -43,6 +43,8 @@ Route::middleware([
 
     Route::resource('vehicle-categories', VehicleCategoryController::class);
 
+    Route::get('/customer/dashboard', 'CustomerController@dashboard');
+
 
 
 

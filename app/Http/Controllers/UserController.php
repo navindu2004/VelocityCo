@@ -91,4 +91,15 @@ class UserController extends Controller
 
         return redirect()->route('user.index')->with('success', 'User deleted successfully.');
     }
+
+    protected function authenticated(Request $request, $user)
+{
+    if ($user->isCustomer()) {
+        return redirect()->route('customer.dashboard');
+    }
+
+    // Redirect other user types as needed
 }
+}
+
+
