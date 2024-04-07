@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use App\Models\User;
 use App\Enums\Role;
+use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
 {
@@ -36,15 +38,28 @@ class UserController extends Controller
     {
         $validated = $request->validate([
             'name' => ['required', 'string'],
-            'email' => ['required', 'email'],
-            'role' => ['required', 'integer'],
+            'email' => ['required', 'email', 'unique:users'],
+            'password' => ['required', 'string', 'min:8'],
+            'role' => ['required', 'string'], // Assuming 'role' is a string
         ]);
 
-        $validated['password'] = bcrypt('password');
+        $user = User::create([
+            'name' => $validated['name'],
+            'email' => $validated['email'],
+            'password' => Hash::make($validated['password']),
+            'role' => $validated['role'],
+        ]);
 
-        User::create($validated);
+        // Automatically log in the user after registration
+        Auth::login($user);
 
-        return redirect()->route('user.index')->with('success', 'User created successfully.');
+        // Redirect based on the user's role
+        if ($user->role === 'customer') {
+            return redirect()->route('customer.dashboard');
+        }
+
+        // Default redirect for other roles or admin
+        return redirect()->route('dashboard');
     }
 
     /**
@@ -94,11 +109,7 @@ class UserController extends Controller
 
     protected function authenticated(Request $request, $user)
 {
-    if ($user->isCustomer()) {
-        return redirect()->route('customer.dashboard');
-    }
-
-    // Redirect other user types as needed
+        // Redirect to admin dashboard or another appropriate location
 }
 }
 

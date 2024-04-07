@@ -13,9 +13,13 @@ return new class extends Migration
     {
         Schema::create('users', function (Blueprint $table) {
             $table->id();
-            $table->tinyInteger('role')->default(2);
             $table->string('name');
             $table->string('email')->unique();
+
+            $table->string('phone')->nullable(); //new field added
+
+            $table->string('usertype')->default('user'); //admin, user, customer (new field added)
+
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->rememberToken();
