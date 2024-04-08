@@ -18,10 +18,11 @@ return new class extends Migration
 
             $table->string('phone')->nullable(); //new field added
 
-            $table->string('usertype')->default('user'); //admin, user, customer (new field added)
+            //$table->string('usertype')->default('user'); //admin, user, customer (new field added)
 
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
+            $table->boolean('type')->default(false); //add type boolean Users: 0=> User, 1=> Admin, 2=>Manager
             $table->rememberToken();
             $table->foreignId('current_team_id')->nullable();
             $table->string('profile_photo_path', 2048)->nullable();

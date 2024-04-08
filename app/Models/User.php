@@ -10,6 +10,7 @@ use Laravel\Fortify\TwoFactorAuthenticatable;
 use Laravel\Jetstream\HasProfilePhoto;
 use Laravel\Sanctum\HasApiTokens;
 use App\Enums\Role;
+use Illuminate\Database\Eloquent\Casts\Attribute;
 
 class User extends Authenticatable
 {
@@ -29,7 +30,7 @@ class User extends Authenticatable
         'email',
         'password',
         'phone',
-        'usertype'
+        'type'
     ];
 
     /**
@@ -63,8 +64,14 @@ class User extends Authenticatable
         'profile_photo_url',
     ];
 
-    public function isCustomer()
-    {
-        return $this->user_type === 'customer';
+    // public function isCustomer()
+    // {
+    //     return $this->user_type === 'customer';
+    // }
+
+    protected function type(): Attribute{
+        return new Attribute(
+            get: fn ($value) => ["user", "admin", "manager"][$value],
+        );
     }
 }
