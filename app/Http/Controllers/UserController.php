@@ -2,11 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 use App\Models\User;
+use Illuminate\Http\Request;
 use App\Enums\Role;
-use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
 {
@@ -38,28 +36,15 @@ class UserController extends Controller
     {
         $validated = $request->validate([
             'name' => ['required', 'string'],
-            'email' => ['required', 'email', 'unique:users'],
-            'password' => ['required', 'string', 'min:8'],
-            'role' => ['required', 'string'], // Assuming 'role' is a string
+            'email' => ['required', 'email'],
+            'role' => ['required', 'integer'],
         ]);
 
-        $user = User::create([
-            'name' => $validated['name'],
-            'email' => $validated['email'],
-            'password' => Hash::make($validated['password']),
-            'role' => $validated['role'],
-        ]);
+        $validated['password'] = bcrypt('password');
 
-        // Automatically log in the user after registration
-        Auth::login($user);
+        User::create($validated);
 
-        // Redirect based on the user's role
-        if ($user->role === 'customer') {
-            return redirect()->route('customer.dashboard');
-        }
-
-        // Default redirect for other roles or admin
-        return redirect()->route('dashboard');
+        return redirect()->route('user.index')->with('success', 'User created successfully.');
     }
 
     /**
@@ -106,11 +91,4 @@ class UserController extends Controller
 
         return redirect()->route('user.index')->with('success', 'User deleted successfully.');
     }
-
-    protected function authenticated(Request $request, $user)
-{
-        // Redirect to admin dashboard or another appropriate location
 }
-}
-
-

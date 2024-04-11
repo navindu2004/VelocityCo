@@ -6,9 +6,6 @@ use Illuminate\Http\Request;
 
 Use App\Http\Controllers\VehicleCategoryController;
 
-use App\Http\Controllers\CustomerController;
-
-use App\Http\Controllers\AdminController;
 
 /*
 |--------------------------------------------------------------------------
@@ -44,20 +41,9 @@ Route::middleware([
         );
 
 
-    Route::resource('vehicle-categories', VehicleCategoryController::class);
-
-    // Route::middleware(['auth:sanctum', 'verified', 'checkUserRole'])->group(function () {
-    //     // Routes that should redirect users based on their role
-    // });
-    //     Route::get('/customer/dashboard', [CustomerController::class, 'dashboard'])->name('customer.dashboard');
-     });
-
-
-route::get('/home', [AdminController::class, 'index']);
+    Route::resource('vehicle-categories', \App\Http\Controllers\VehicleCategoryController::class);
 
 
 
 
-Auth::routes();
-
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+});

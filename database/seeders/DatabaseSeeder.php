@@ -1,10 +1,10 @@
 <?php
 
 namespace Database\Seeders;
-use App\Models\Vehicle;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use App\Models\VehicleCategory;
 
 class DatabaseSeeder extends Seeder
 {
@@ -13,17 +13,10 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        
-        \App\Models\User::factory(10)->create();
 
-        
-            \App\Models\User::factory()->create([
-                'name' => 'Admin',
-                'email' => 'admin@admin.com',
-                'password' => bcrypt('admin'),
-                'role' => 1,
-            ]);
-        
+        \App\Models\User::factory(10)->create();
+        \App\Models\Vehicle::factory(10)->create();
+        \App\Models\Admin::factory()->create();
 
 
     }
