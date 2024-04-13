@@ -9,8 +9,6 @@ use Illuminate\Notifications\Notifiable;
 use Laravel\Fortify\TwoFactorAuthenticatable;
 use Laravel\Jetstream\HasProfilePhoto;
 use Laravel\Sanctum\HasApiTokens;
-use App\Enums\Role;
-use Illuminate\Database\Eloquent\Casts\Attribute;
 
 class User extends Authenticatable
 {
@@ -29,8 +27,6 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
-        'phone',
-        'type'
     ];
 
     /**
@@ -44,6 +40,7 @@ class User extends Authenticatable
         'two_factor_recovery_codes',
         'two_factor_secret',
     ];
+    
 
     /**
      * The attributes that should be cast.
@@ -52,7 +49,6 @@ class User extends Authenticatable
      */
     protected $casts = [
         'email_verified_at' => 'datetime',
-        'role' => Role::class,
     ];
 
     /**
@@ -63,15 +59,4 @@ class User extends Authenticatable
     protected $appends = [
         'profile_photo_url',
     ];
-
-    // public function isCustomer()
-    // {
-    //     return $this->user_type === 'customer';
-    // }
-
-    protected function type(): Attribute{
-        return new Attribute(
-            get: fn ($value) => ["user", "admin", "manager"][$value],
-        );
-    }
 }

@@ -4,7 +4,7 @@
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
             <!-- {{ __('Dashboard') }} -->
-            THIS IS THE USER DASHBOARD ONLY.
+            ADMIN DASHBOARD WORKSSS
         </h2>
     </x-slot>
 
