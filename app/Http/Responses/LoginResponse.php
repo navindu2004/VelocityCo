@@ -29,6 +29,6 @@ class LoginResponse implements LoginResponseContract
         }
 
         // If the user is not authenticated, redirect to the login page with an error message
-        return redirect()->route('login')->withErrors(['message' => 'Login failed. Please try again.']);
+        return redirect()->route('admin.login')->withErrors(['message' => 'Login failed. Please try again.']);
     }
 }

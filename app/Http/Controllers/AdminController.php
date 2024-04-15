@@ -14,6 +14,7 @@ use Laravel\Fortify\Contracts\LogoutResponse;
 use Laravel\Fortify\Features;
 use Laravel\Fortify\Fortify;
 use Laravel\Fortify\Http\Requests\LoginRequest;
+use Illuminate\Support\Facades\Auth;
 
 use App\Actions\Fortify\RedirectIfTwoFactorAuthenticatable;
 use App\Actions\Fortify\AttemptToAuthenticate;
@@ -63,9 +64,15 @@ class AdminController extends Controller
      */
     public function store(LoginRequest $request)
     {
-        return $this->loginPipeline($request)->then(function ($request) {
-            return app(LoginResponse::class);
-        });
+        if (Auth::guard('admin')->attempt($request->only('email', 'password'), $request->filled('remember'))) {
+            // Authentication passed, redirect to the admin dashboard
+            return redirect()->intended('admin/dashboard');
+        }
+    
+        // Authentication failed, redirect back with error
+        return back()->withErrors([
+            'email' => 'The provided credentials do not match our records.',
+        ]);
     }
 
     /**
