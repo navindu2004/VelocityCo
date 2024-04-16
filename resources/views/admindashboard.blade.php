@@ -11,4 +11,5 @@
     <div class="py-12">
         This is the new page
     </div>
+        
 </x-app-layout>
