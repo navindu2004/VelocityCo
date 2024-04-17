@@ -8,6 +8,8 @@ Use App\Http\Controllers\VehicleCategoryController;
 
 use App\Http\Controllers\AdminController;
 
+use App\Http\Controllers\UserController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -64,6 +66,7 @@ Route::middleware([
 
 
     Route::resource('vehicle-categories', \App\Http\Controllers\VehicleCategoryController::class);
+    Route::resource('admin/user', \App\Http\Controllers\UserController::class);
 
 
 

@@ -8,6 +8,7 @@
         </h2>
     </x-slot>
 
+
     <div class="py-12">
         This is the new page
     </div>
