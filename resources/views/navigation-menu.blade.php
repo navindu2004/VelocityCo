@@ -16,6 +16,16 @@
                         {{ __('Dashboard') }}
                     </x-nav-link>
                 </div>
+                <div class="w-full block flex-grow lg:flex lg:items-center lg:w-auto">
+        <div class="text-sm lg:flex-grow">
+            <a href="{{ route('vehicle-categories.index') }}" class="block mt-4 lg:inline-block lg:mt-0 text-teal-200 hover:text-white mr-4">
+                Vehicle Categories
+            </a>
+            <a href="{{ route('user.index') }}" class="block mt-4 lg:inline-block lg:mt-0 text-teal-200 hover:text-white">
+                User Management
+            </a>
+        </div>
+    </div>
             </div>
 
             <div class="hidden sm:flex sm:items-center sm:ms-6">
@@ -34,16 +44,6 @@
                                     </button>
                                 </span>
                             </x-slot>
-                            <div class="w-full block flex-grow lg:flex lg:items-center lg:w-auto">
-        <div class="text-sm lg:flex-grow">
-            <a href="{{ route('vehicle-categories.index') }}" class="block mt-4 lg:inline-block lg:mt-0 text-teal-200 hover:text-white mr-4">
-                Vehicle Categories
-            </a>
-            <a href="{{ route('admin.user.index') }}" class="block mt-4 lg:inline-block lg:mt-0 text-teal-200 hover:text-white">
-                User Management
-            </a>
-        </div>
-    </div>  
 
                             <x-slot name="content">
                                 <div class="w-60">
