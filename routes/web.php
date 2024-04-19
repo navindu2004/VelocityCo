@@ -65,6 +65,10 @@ Route::middleware([
 
     Route::resource('vehicle-categories', \App\Http\Controllers\VehicleCategoryController::class);
 
+    Route::get('/dealerships', function () {
+        return view('dealerships');
+    })->name('dealerships');
+
 
 
 
