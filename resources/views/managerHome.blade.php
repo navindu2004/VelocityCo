@@ -1,233 +1,481 @@
-<nav x-data="{ open: false }" class="bg-white border-b border-gray-100">
-    <!-- Primary Navigation Menu -->
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="flex justify-between h-16">
-            <div class="flex">
-                <!-- Logo -->
-                <div class="shrink-0 flex items-center">
-                    <a href="{{ route('dashboard') }}">
-                        <x-application-mark class="block h-9 w-auto" />
+<!DOCTYPE html>
+
+<!--
+ // WEBSITE: https://themefisher.com
+ // TWITTER: https://twitter.com/themefisher
+ // FACEBOOK: https://www.facebook.com/themefisher
+ // GITHUB: https://github.com/themefisher/
+-->
+
+<html class="no-js">
+    <head>
+        <!-- Basic Page Needs
+        ================================================== -->
+        <meta charset="utf-8">
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+        <link rel="icon" href="favicon.ico">
+        <title>Timer Agency Template</title>
+        <meta name="description" content="">
+        <meta name="keywords" content="">
+        <meta name="author" content="">
+        <!-- Mobile Specific Metas
+        ================================================== -->
+        <meta name="format-detection" content="telephone=no">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+      
+        <!-- theme meta -->
+        <meta name="theme-name" content="timer" />
+
+        
+        <!-- Template CSS Files
+        ================================================== -->
+        <!-- Twitter Bootstrs CSS -->
+        <link rel="stylesheet" href="plugins/bootstrap/bootstrap.min.css">
+        <!-- Ionicons Fonts Css -->
+        <link rel="stylesheet" href="plugins/ionicons/ionicons.min.css">
+        <!-- animate css -->
+        <link rel="stylesheet" href="plugins/animate-css/animate.css">
+        <!-- Hero area slider css-->
+        <link rel="stylesheet" href="plugins/slider/slider.css">
+        <!-- slick slider -->
+        <link rel="stylesheet" href="plugins/slick/slick.css">
+        <!-- Fancybox -->
+        <link rel="stylesheet" href="plugins/facncybox/jquery.fancybox.css">
+        <!-- hover -->
+        <link rel="stylesheet" href="plugins/hover/hover-min.css">
+        <!-- template main css file -->
+        <link rel="stylesheet" href="css/style.css">
+    </head>
+    <body>
+
+<!--
+        ==================================================
+        Header Section Start
+        ================================================== -->
+<section class="top-bar animated-header">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <nav class="navbar navbar-expand-lg navbar-light bg-light">
+                    <a class="navbar-brand" href="index.html">
+                        <img src="../images/logo.png" alt="logo">
                     </a>
-                </div>
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
 
-                <!-- Navigation Links -->
-                <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
-                    <x-nav-link href="{{ route('dashboard') }}" :active="request()->routeIs('dashboard')">
-                        {{ __('Dashboard') }}
-                    </x-nav-link>
-                </div>
-            </div>
-
-            <div class="hidden sm:flex sm:items-center sm:ms-6">
-                <!-- Teams Dropdown -->
-                @if (Laravel\Jetstream\Jetstream::hasTeamFeatures())
-                    <div class="ms-3 relative">
-                        <x-dropdown align="right" width="60">
-                            <x-slot name="trigger">
-                                <span class="inline-flex rounded-md">
-                                    <button type="button" class="inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-gray-500 bg-white hover:text-gray-700 focus:outline-none focus:bg-gray-50 active:bg-gray-50 transition ease-in-out duration-150">
-                                        {{ Auth::user()->currentTeam->name }}
-
-                                        <svg class="ms-2 -me-0.5 h-4 w-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-                                            <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 15L12 18.75 15.75 15m-7.5-6L12 5.25 15.75 9" />
-                                        </svg>
-                                    </button>
-                                </span>
-                            </x-slot>
-
-                            <x-slot name="content">
-                                <div class="w-60">
-                                    <!-- Team Management -->
-                                    <div class="block px-4 py-2 text-xs text-gray-400">
-                                        {{ __('Manage Team') }}
-                                    </div>
-
-                                    <!-- Team Settings -->
-                                    <x-dropdown-link href="{{ route('teams.show', Auth::user()->currentTeam->id) }}">
-                                        {{ __('Team Settings') }}
-                                    </x-dropdown-link>
-
-                                    @can('create', Laravel\Jetstream\Jetstream::newTeamModel())
-                                        <x-dropdown-link href="{{ route('teams.create') }}">
-                                            {{ __('Create New Team') }}
-                                        </x-dropdown-link>
-                                    @endcan
-
-                                    <!-- Team Switcher -->
-                                    @if (Auth::user()->allTeams()->count() > 1)
-                                        <div class="border-t border-gray-200"></div>
-
-                                        <div class="block px-4 py-2 text-xs text-gray-400">
-                                            {{ __('Switch Teams') }}
-                                        </div>
-
-                                        @foreach (Auth::user()->allTeams() as $team)
-                                            <x-switchable-team :team="$team" />
-                                        @endforeach
-                                    @endif
+                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                        <ul class="navbar-nav ml-auto">
+                            <li class="nav-item">
+                                <a class="nav-link" href="index.html">Home
+                                    <span class="sr-only">(current)</span>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="about.html">About</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="service.html">Service</a>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true"
+                                    aria-expanded="false">
+                                    Pages
+                                </a>
+                                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                    <a class="dropdown-item" href="404.html">404 Page</a>
+                                    <a class="dropdown-item" href="gallery.html">Gallery</a>
+                                    <a class="dropdown-item" href="single-post.html">Single Post</a>
                                 </div>
-                            </x-slot>
-                        </x-dropdown>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true"
+                                    aria-expanded="false">
+                                    Blog
+                                </a>
+                                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                    <a class="dropdown-item" href="blog-fullwidth.html">Blog Full</a>
+                                    <a class="dropdown-item" href="blog-left-sidebar.html">Blog Left sidebar</a>
+                                    <a class="dropdown-item" href="blog-right-sidebar.html">Blog Right sidebar</a>
+                                </div>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="contact.html">Contact</a>
+                            </li>
+                        </ul>
                     </div>
-                @endif
+                </nav>
+            </div>
+        </div>
+    </div>
+</section>
 
-                <!-- Settings Dropdown -->
-                <div class="ms-3 relative">
-                    <x-dropdown align="right" width="48">
-                        <x-slot name="trigger">
-                            @if (Laravel\Jetstream\Jetstream::managesProfilePhotos())
-                                <button class="flex text-sm border-2 border-transparent rounded-full focus:outline-none focus:border-gray-300 transition">
-                                    <img class="h-8 w-8 rounded-full object-cover" src="{{ Auth::user()->profile_photo_url }}" alt="{{ Auth::user()->name }}" />
-                                </button>
-                            @else
-                                <span class="inline-flex rounded-md">
-                                    <button type="button" class="inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-gray-500 bg-white hover:text-gray-700 focus:outline-none focus:bg-gray-50 active:bg-gray-50 transition ease-in-out duration-150">
-                                        {{ Auth::user()->name }}
+<!--
+==================================================
+Slider Section Start
+================================================== -->
+<section id="hero-area">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12 text-center">
+        <div class="block wow fadeInUp" data-wow-delay=".3s">
 
-                                        <svg class="ms-2 -me-0.5 h-4 w-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-                                            <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
-                                        </svg>
-                                    </button>
-                                </span>
-                            @endif
-                        </x-slot>
+          <!-- Slider -->
+          <section class="cd-intro">
+            <h1 class="wow fadeInUp animated cd-headline slide" data-wow-delay=".4s">
+              <span>HI, MY NAME IS JONATHON &amp; I AM A</span><br>
+              <span class="cd-words-wrapper">
+                <b class="is-visible">DESIGNER</b>
+                <b>DEVELOPER</b>
+                <b>FATHER</b>
+              </span>
+            </h1>
+          </section> <!-- cd-intro -->
+          <!-- /.slider -->
+          <h2 class="wow fadeInUp animated" data-wow-delay=".6s">
+            With 10 years experience, I've occupied many roles including digital design director,<br> web designer and
+            developer. This site showcases some of my work.
+          </h2>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!--/#main-slider->
 
-                        <x-slot name="content">
-                            <!-- Account Management -->
-                            <div class="block px-4 py-2 text-xs text-gray-400">
-                                {{ __('Manage Account') }}
+
+==================================================
+Portfolio Section Start
+================================================== -->
+<section id="works" class="works">
+  <div class="container">
+    <div class="section-heading">
+      <h1 class="title wow fadeInDown" data-wow-delay=".3s">Latest Works</h1>
+      <p class="wow fadeInDown" data-wow-delay=".5s">
+        Aliquam lobortis. Maecenas vestibulum mollis diam. Pellentesque auctor neque nec urna. Nulla sit amet est.
+        Aenean posuere <br> tortor sed cursus feugiat, nunc augue blandit nunc, eu sollicitudin urna dolor sagittis
+        lacus.
+      </p>
+    </div>
+    <div class="row">
+      <div class="col-md-4 col-sm-6">
+        <figure class="wow fadeInLeft animated portfolio-item" data-wow-duration="500ms" data-wow-delay="0ms">
+          <div class="img-wrapper">
+            <img src="images/portfolio/item-1.jpg" class="img-fluid" alt="this is a title">
+            <div class="overlay">
+              <div class="buttons">
+                <a rel="gallery" class="fancybox" href="images/portfolio/item-1.jpg">Demo</a>
+                <a target="_blank" href="single-portfolio.html">Details</a>
+              </div>
+            </div>
+          </div>
+          <figcaption>
+            <h4>
+              <a href="#">
+                Dew Drop
+              </a>
+            </h4>
+            <p>
+              Redesigne UI Concept
+            </p>
+          </figcaption>
+        </figure>
+      </div>
+      <div class="col-md-4 col-sm-6">
+        <figure class="wow fadeInLeft animated" data-wow-duration="500ms" data-wow-delay="300ms">
+          <div class="img-wrapper">
+            <img src="images/portfolio/item-2.jpg" class="img-fluid" alt="this is a title">
+            <div class="overlay">
+              <div class="buttons">
+                <a rel="gallery" class="fancybox" href="images/portfolio/item-2.jpg">Demo</a>
+                <a target="_blank" href="single-portfolio.html">Details</a>
+              </div>
+            </div>
+          </div>
+          <figcaption>
+            <h4>
+              <a href="#">
+                Bottle Mockup
+              </a>
+            </h4>
+            <p>
+              Lorem ipsum dolor sit.
+            </p>
+          </figcaption>
+        </figure>
+      </div>
+      <div class="col-md-4 col-sm-6">
+        <figure class="wow fadeInLeft animated" data-wow-duration="500ms" data-wow-delay="300ms">
+          <div class="img-wrapper">
+            <img src="images/portfolio/item-3.jpg" class="img-fluid" alt="">
+            <div class="overlay">
+              <div class="buttons">
+                <a rel="gallery" class="fancybox" href="images/portfolio/item-3.jpg">Demo</a>
+                <a target="_blank" href="single-portfolio.html">Details</a>
+              </div>
+            </div>
+          </div>
+          <figcaption>
+            <h4>
+              <a href="#">
+                Table Design
+              </a>
+            </h4>
+            <p>
+              Lorem ipsum dolor sit amet.
+            </p>
+          </figcaption>
+        </figure>
+      </div>
+      <div class="col-md-4 col-sm-6">
+        <figure class="wow fadeInLeft animated" data-wow-duration="500ms" data-wow-delay="600ms">
+          <div class="img-wrapper">
+            <img src="images/portfolio/item-4.jpg" class="img-fluid" alt="">
+            <div class="overlay">
+              <div class="buttons">
+                <a rel="gallery" class="fancybox" href="images/portfolio/item-4.jpg">Demo</a>
+                <a target="_blank" href="single-portfolio.html">Details</a>
+              </div>
+            </div>
+          </div>
+          <figcaption>
+            <h4>
+              <a href="#">
+                Make Up elements
+              </a>
+            </h4>
+            <p>
+              Lorem ipsum dolor.
+            </p>
+          </figcaption>
+        </figure>
+      </div>
+      <div class="col-md-4 col-sm-6">
+        <figure class="wow fadeInLeft animated" data-wow-duration="500ms" data-wow-delay="900ms">
+          <div class="img-wrapper">
+            <img src="images/portfolio/item-5.jpg" class="img-fluid" alt="">
+            <div class="overlay">
+              <div class="buttons">
+                <a rel="gallery" class="fancybox" href="images/portfolio/item-5.jpg">Demo</a>
+                <a target="_blank" href="single-portfolio.html">Details</a>
+              </div>
+            </div>
+          </div>
+          <figcaption>
+            <h4>
+              <a href="#">
+                Shoping Bag Concept
+              </a>
+            </h4>
+            <p>
+              Lorem ipsum dolor.
+            </p>
+          </figcaption>
+        </figure>
+      </div>
+      <div class="col-md-4 col-sm-6">
+        <figure class="wow fadeInLeft animated" data-wow-duration="500ms" data-wow-delay="1200ms">
+          <div class="img-wrapper">
+            <img src="images/portfolio/item-6.jpg" class="img-fluid" alt="">
+            <div class="overlay">
+              <div class="buttons">
+                <a rel="gallery" class="fancybox" href="images/portfolio/item-6.jpg">Demo</a>
+                <a target="_blank" href="single-portfolio.html">Details</a>
+              </div>
+            </div>
+          </div>
+          <figcaption>
+            <h4>
+              <a href="#">
+                Caramel Bottle
+              </a>
+            </h4>
+            <p>
+              Lorem ipsum dolor.
+            </p>
+          </figcaption>
+        </figure>
+      </div>
+    </div>
+  </div>
+</section> <!-- #works -->
+<!--
+==================================================
+Portfolio Section Start
+================================================== -->
+<section id="feature">
+  <div class="container">
+    <div class="section-heading">
+      <h1 class="title wow fadeInDown" data-wow-delay=".3s">Offer From Me</h1>
+      <p class="wow fadeInDown" data-wow-delay=".5s">
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sed,<br> quasi dolores numquam dolor vero ex, tempora
+        commodi repellendus quod laborum.
+      </p>
+    </div>
+    <div class="row">
+      <div class="col-sm-6 col-lg-4">
+        <div class="media wow fadeInUp animated" data-wow-duration="500ms" data-wow-delay="300ms">
+          <div class="media-left">
+            <div class="icon">
+              <i class="ion-ios-flask-outline"></i>
+            </div>
+          </div>
+          <div class="media-body">
+            <h4 class="media-heading">Media heading</h4>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatum, sint.</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-6 col-lg-4">
+        <div class="media wow fadeInDown animated" data-wow-duration="500ms" data-wow-delay="600ms">
+          <div class="media-left">
+            <div class="icon">
+              <i class="ion-ios-lightbulb-outline"></i>
+            </div>
+          </div>
+          <div class="media-body">
+            <h4 class="media-heading">Well documented.</h4>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatum, sint.</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-6 col-lg-4">
+        <div class="media wow fadeInDown animated" data-wow-duration="500ms" data-wow-delay="900ms">
+          <div class="media-left">
+            <div class="icon">
+              <i class="ion-ios-lightbulb-outline"></i>
+            </div>
+          </div>
+          <div class="media-body">
+            <h4 class="media-heading">Well documented.</h4>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatum, sint.</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-6 col-lg-4">
+        <div class="media wow fadeInDown animated" data-wow-duration="500ms" data-wow-delay="1200ms">
+          <div class="media-left">
+            <div class="icon">
+              <i class="ion-ios-americanfootball-outline"></i>
+            </div>
+          </div>
+          <div class="media-body">
+            <h4 class="media-heading">Free updates</h4>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatum, sint.</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-6 col-lg-4">
+        <div class="media wow fadeInDown animated" data-wow-duration="500ms" data-wow-delay="1500ms">
+          <div class="media-left">
+            <div class="icon">
+              <i class="ion-ios-keypad-outline"></i>
+            </div>
+          </div>
+          <div class="media-body">
+            <h4 class="media-heading">Solid Support</h4>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatum, sint.</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-6 col-lg-4">
+        <div class="media wow fadeInDown animated" data-wow-duration="500ms" data-wow-delay="1800ms">
+          <div class="media-left">
+            <div class="icon">
+              <i class="ion-ios-barcode-outline"></i>
+            </div>
+          </div>
+          <div class="media-body">
+            <h4 class="media-heading">Simple Installation</h4>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatum, sint.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section> <!-- /#feature -->
+}
+
+            <!--
+            ==================================================
+            Call To Action Section Start
+            ================================================== -->
+            <section id="call-to-action">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="block">
+                                <h2 class="title wow fadeInDown" data-wow-delay=".3s" data-wow-duration="500ms">SO WHAT YOU THINK ?</h1>
+                                <p class="wow fadeInDown" data-wow-delay=".5s" data-wow-duration="500ms">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nobis,<br>possimus commodi, fugiat magnam temporibus vero magni recusandae? Dolore, maxime praesentium.</p>
+                                <a href="contact.html" class="btn btn-default btn-contact wow fadeInDown" data-wow-delay=".7s" data-wow-duration="500ms">Contact With Me</a>
                             </div>
-
-                            <x-dropdown-link href="{{ route('profile.show') }}">
-                                {{ __('Profile') }}
-                            </x-dropdown-link>
-
-                            @if (Laravel\Jetstream\Jetstream::hasApiFeatures())
-                                <x-dropdown-link href="{{ route('api-tokens.index') }}">
-                                    {{ __('API Tokens') }}
-                                </x-dropdown-link>
-                            @endif
-
-                            <div class="border-t border-gray-200"></div>
-
-                            <!-- Authentication -->
-                            <form method="POST" action="{{ route('logout') }}" x-data>
-                                @csrf
-
-                                <x-dropdown-link href="{{ route('logout') }}"
-                                         @click.prevent="$root.submit();">
-                                    {{ __('Log Out') }}
-                                </x-dropdown-link>
-                            </form>
-                        </x-slot>
-                    </x-dropdown>
-                </div>
-            </div>
-
-            <!-- Hamburger -->
-            <div class="-me-2 flex items-center sm:hidden">
-                <button @click="open = ! open" class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 focus:text-gray-500 transition duration-150 ease-in-out">
-                    <svg class="h-6 w-6" stroke="currentColor" fill="none" viewBox="0 0 24 24">
-                        <path :class="{'hidden': open, 'inline-flex': ! open }" class="inline-flex" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
-                        <path :class="{'hidden': ! open, 'inline-flex': open }" class="hidden" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
-                    </svg>
-                </button>
-            </div>
-        </div>
-    </div>
-
-    <!-- Responsive Navigation Menu -->
-    <div :class="{'block': open, 'hidden': ! open}" class="hidden sm:hidden">
-        <div class="pt-2 pb-3 space-y-1">
-            <x-responsive-nav-link href="{{ route('dashboard') }}" :active="request()->routeIs('dashboard')">
-                {{ __('Dashboard') }}
-            </x-responsive-nav-link>
-        </div>
-
-        <!-- Responsive Settings Options -->
-        <div class="pt-4 pb-1 border-t border-gray-200">
-            <div class="flex items-center px-4">
-                @if (Laravel\Jetstream\Jetstream::managesProfilePhotos())
-                    <div class="shrink-0 me-3">
-                        <img class="h-10 w-10 rounded-full object-cover" src="{{ Auth::user()->profile_photo_url }}" alt="{{ Auth::user()->name }}" />
-                    </div>
-                @endif
-
-                <div>
-                    <div class="font-medium text-base text-gray-800">{{ Auth::user()->name }}</div>
-                    <div class="font-medium text-sm text-gray-500">{{ Auth::user()->email }}</div>
-                </div>
-            </div>
-
-            <div class="mt-3 space-y-1">
-                <!-- Account Management -->
-                <x-responsive-nav-link href="{{ route('profile.show') }}" :active="request()->routeIs('profile.show')">
-                    {{ __('Profile') }}
-                </x-responsive-nav-link>
-
-                @if (Laravel\Jetstream\Jetstream::hasApiFeatures())
-                    <x-responsive-nav-link href="{{ route('api-tokens.index') }}" :active="request()->routeIs('api-tokens.index')">
-                        {{ __('API Tokens') }}
-                    </x-responsive-nav-link>
-                @endif
-
-                <!-- Authentication -->
-                <form method="POST" action="{{ route('logout') }}" x-data>
-                    @csrf
-
-                    <x-responsive-nav-link href="{{ route('logout') }}"
-                                   @click.prevent="$root.submit();">
-                        {{ __('Log Out') }}
-                    </x-responsive-nav-link>
-                </form>
-
-                <!-- Team Management -->
-                @if (Laravel\Jetstream\Jetstream::hasTeamFeatures())
-                    <div class="border-t border-gray-200"></div>
-
-                    <div class="block px-4 py-2 text-xs text-gray-400">
-                        {{ __('Manage Team') }}
-                    </div>
-
-                    <!-- Team Settings -->
-                    <x-responsive-nav-link href="{{ route('teams.show', Auth::user()->currentTeam->id) }}" :active="request()->routeIs('teams.show')">
-                        {{ __('Team Settings') }}
-                    </x-responsive-nav-link>
-
-                    @can('create', Laravel\Jetstream\Jetstream::newTeamModel())
-                        <x-responsive-nav-link href="{{ route('teams.create') }}" :active="request()->routeIs('teams.create')">
-                            {{ __('Create New Team') }}
-                        </x-responsive-nav-link>
-                    @endcan
-
-                    <!-- Team Switcher -->
-                    @if (Auth::user()->allTeams()->count() > 1)
-                        <div class="border-t border-gray-200"></div>
-
-                        <div class="block px-4 py-2 text-xs text-gray-400">
-                            {{ __('Switch Teams') }}
                         </div>
+                        
+                    </div>
+                </div>
+            </section>
 
-                        @foreach (Auth::user()->allTeams() as $team)
-                            <x-switchable-team :team="$team" component="responsive-nav-link" />
-                        @endforeach
-                    @endif
-                @endif
-            </div>
-        </div>
-    </div>
-</nav>
-<x-guest-layout>
-    <div class="pt-4 bg-gray-100">
-        <div class="min-h-screen flex flex-col items-center pt-6 sm:pt-0">
-            <div>
-                <x-authentication-card-logo />
-            </div>
+            <!--
+            ==================================================
+            Footer Section Start
+            ================================================== -->
+            <footer id="footer">
+                <div class="container">
+                    <div class="row content-justify-between">
+                        <div class="col-md-8 col-12 text-center text-lg-left text-md-left">
+                            <p class="copyright">Copyright: Design and Developed by <a href="http://www.Themefisher.com" target="_blank">Themefisher</a>. <br> 
+                                Get More Bootstrap Template From Our 
+                                <a href="https://themefisher.com/free-bootstrap-templates/" target="_blank">Store</a>
+                            </p>
+                        </div>
+                        <div class="col-md-4 col-12">
+                            <!-- Social Media -->
+                            <ul class="social text-center text-md-right text-lg-right">
+                                <li>
+                                    <a href="http://wwww.fb.com/themefisher" class="Facebook">
+                                        <i class="ion-social-facebook"></i>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="http://wwww.twitter.com/themefisher" class="Twitter">
+                                        <i class="ion-social-twitter"></i>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#" class="Linkedin">
+                                        <i class="ion-social-linkedin"></i>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="http://wwww.fb.com/themefisher" class="Google Plus">
+                                        <i class="ion-social-googleplus"></i>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </footer> <!-- /#footer -->
 
-            <div class="w-full sm:max-w-2xl mt-6 p-6 bg-white shadow-md overflow-hidden sm:rounded-lg prose">
-                {!! $policy !!}
-            </div>
-        </div>
-    </div>
-</x-guest-layout>
-
+	<!-- Template Javascript Files
+	================================================== -->
+	<!-- jquery -->
+	<script src="plugins/jQurey/jquery.min.js"></script>
+	<!-- Form Validation -->
+    <script src="plugins/form-validation/jquery.form.js"></script> 
+    <script src="plugins/form-validation/jquery.validate.min.js"></script>
+	<!-- slick slider -->
+	<script src="plugins/slick/slick.min.js"></script>
+	<!-- bootstrap js -->
+	<script src="plugins/bootstrap/bootstrap.min.js"></script>
+	<!-- wow js -->
+	<script src="plugins/wow-js/wow.min.js"></script>
+	<!-- slider js -->
+	<script src="plugins/slider/slider.js"></script>
+	<!-- Fancybox -->
+	<script src="plugins/facncybox/jquery.fancybox.js"></script>
+	<!-- template main js -->
+	<script src="js/main.js"></script>
+ 	</body>
+</html>
