@@ -124,18 +124,17 @@ Slider Section Start
           <!-- Slider -->
           <section class="cd-intro">
             <h1 class="wow fadeInUp animated cd-headline slide" data-wow-delay=".4s">
-              <span>HI, MY NAME IS JONATHON &amp; I AM A</span><br>
+              <span>Search from dealerships nationwide</span><br>
               <span class="cd-words-wrapper">
-                <b class="is-visible">DESIGNER</b>
-                <b>DEVELOPER</b>
-                <b>FATHER</b>
+                <b class="is-visible">Colombo</b>
+                <b>Kandy</b>
+                <b>Galle</b>
               </span>
             </h1>
           </section> <!-- cd-intro -->
           <!-- /.slider -->
           <h2 class="wow fadeInUp animated" data-wow-delay=".6s">
-            With 10 years experience, I've occupied many roles including digital design director,<br> web designer and
-            developer. This site showcases some of my work.
+            With over 10,000 cars, we have the largest range of cars in Sri Lanka, from dealerships nationwide.
           </h2>
         </div>
       </div>
@@ -151,21 +150,20 @@ Portfolio Section Start
 <section id="works" class="works">
   <div class="container">
     <div class="section-heading">
-      <h1 class="title wow fadeInDown" data-wow-delay=".3s">Latest Works</h1>
+      <h1 class="title wow fadeInDown" data-wow-delay=".3s">Dealerships in Colombo</h1>
       <p class="wow fadeInDown" data-wow-delay=".5s">
-        Aliquam lobortis. Maecenas vestibulum mollis diam. Pellentesque auctor neque nec urna. Nulla sit amet est.
-        Aenean posuere <br> tortor sed cursus feugiat, nunc augue blandit nunc, eu sollicitudin urna dolor sagittis
-        lacus.
+        Discover premium dealerships in Colombo, offering a range of vehicles, whether it be a car or your dream SUV.<br>
+        Explore our extensive collection and find the perfect vehicle that suits your needs and desires.
       </p>
     </div>
     <div class="row">
       <div class="col-md-4 col-sm-6">
         <figure class="wow fadeInLeft animated portfolio-item" data-wow-duration="500ms" data-wow-delay="0ms">
           <div class="img-wrapper">
-            <img src="images/portfolio/item-1.jpg" class="img-fluid" alt="this is a title">
+            <img src="images/dealership01.jpg" class="img-fluid" alt="this is a title">
             <div class="overlay">
               <div class="buttons">
-                <a rel="gallery" class="fancybox" href="images/portfolio/item-1.jpg">Demo</a>
+                <a rel="gallery" class="fancybox" href="images/dealership01.jpg">Demo</a>
                 <a target="_blank" href="single-portfolio.html">Details</a>
               </div>
             </div>
@@ -185,10 +183,10 @@ Portfolio Section Start
       <div class="col-md-4 col-sm-6">
         <figure class="wow fadeInLeft animated" data-wow-duration="500ms" data-wow-delay="300ms">
           <div class="img-wrapper">
-            <img src="images/portfolio/item-2.jpg" class="img-fluid" alt="this is a title">
+            <img src="images/dealership02.jpg" class="img-fluid" alt="this is a title">
             <div class="overlay">
               <div class="buttons">
-                <a rel="gallery" class="fancybox" href="images/portfolio/item-2.jpg">Demo</a>
+                <a rel="gallery" class="fancybox" href="images/dealership02.jpg">Demo</a>
                 <a target="_blank" href="single-portfolio.html">Details</a>
               </div>
             </div>
@@ -208,10 +206,10 @@ Portfolio Section Start
       <div class="col-md-4 col-sm-6">
         <figure class="wow fadeInLeft animated" data-wow-duration="500ms" data-wow-delay="300ms">
           <div class="img-wrapper">
-            <img src="images/portfolio/item-3.jpg" class="img-fluid" alt="">
+            <img src="images/dealership03.jpg" class="img-fluid" alt="">
             <div class="overlay">
               <div class="buttons">
-                <a rel="gallery" class="fancybox" href="images/portfolio/item-3.jpg">Demo</a>
+                <a rel="gallery" class="fancybox" href="images/dealership03.jpg">Demo</a>
                 <a target="_blank" href="single-portfolio.html">Details</a>
               </div>
             </div>
@@ -231,10 +229,10 @@ Portfolio Section Start
       <div class="col-md-4 col-sm-6">
         <figure class="wow fadeInLeft animated" data-wow-duration="500ms" data-wow-delay="600ms">
           <div class="img-wrapper">
-            <img src="images/portfolio/item-4.jpg" class="img-fluid" alt="">
+            <img src="images/dealership04.jpg" class="img-fluid" alt="">
             <div class="overlay">
               <div class="buttons">
-                <a rel="gallery" class="fancybox" href="images/portfolio/item-4.jpg">Demo</a>
+                <a rel="gallery" class="fancybox" href="images/dealership04.jpg">Demo</a>
                 <a target="_blank" href="single-portfolio.html">Details</a>
               </div>
             </div>
@@ -254,10 +252,10 @@ Portfolio Section Start
       <div class="col-md-4 col-sm-6">
         <figure class="wow fadeInLeft animated" data-wow-duration="500ms" data-wow-delay="900ms">
           <div class="img-wrapper">
-            <img src="images/portfolio/item-5.jpg" class="img-fluid" alt="">
+            <img src="images/dealership05.jpg" class="img-fluid" alt="">
             <div class="overlay">
               <div class="buttons">
-                <a rel="gallery" class="fancybox" href="images/portfolio/item-5.jpg">Demo</a>
+                <a rel="gallery" class="fancybox" href="images/dealership05.jpg">Demo</a>
                 <a target="_blank" href="single-portfolio.html">Details</a>
               </div>
             </div>
@@ -277,10 +275,10 @@ Portfolio Section Start
       <div class="col-md-4 col-sm-6">
         <figure class="wow fadeInLeft animated" data-wow-duration="500ms" data-wow-delay="1200ms">
           <div class="img-wrapper">
-            <img src="images/portfolio/item-6.jpg" class="img-fluid" alt="">
+            <img src="images/dealership06.jpg" class="img-fluid" alt="">
             <div class="overlay">
               <div class="buttons">
-                <a rel="gallery" class="fancybox" href="images/portfolio/item-6.jpg">Demo</a>
+                <a rel="gallery" class="fancybox" href="images/dealership06.jpg">Demo</a>
                 <a target="_blank" href="single-portfolio.html">Details</a>
               </div>
             </div>
@@ -306,13 +304,7 @@ Portfolio Section Start
 ================================================== -->
 <section id="feature">
   <div class="container">
-    <div class="section-heading">
-      <h1 class="title wow fadeInDown" data-wow-delay=".3s">Offer From Me</h1>
-      <p class="wow fadeInDown" data-wow-delay=".5s">
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sed,<br> quasi dolores numquam dolor vero ex, tempora
-        commodi repellendus quod laborum.
-      </p>
-    </div>
+    
     <div class="row">
       <div class="col-sm-6 col-lg-4">
         <div class="media wow fadeInUp animated" data-wow-duration="500ms" data-wow-delay="300ms">
