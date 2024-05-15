@@ -7,7 +7,7 @@
  // GITHUB: https://github.com/themefisher/
 -->
 
-<html class="no-js">
+<html>
     <head>
         <!-- Basic Page Needs
         ================================================== -->
@@ -387,7 +387,7 @@ Portfolio Section Start
     </div>
   </div>
 </section> <!-- /#feature -->
-}
+
 
             <!--
             ==================================================

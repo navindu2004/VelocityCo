@@ -38,7 +38,7 @@
             </main>
         </div>
 
-        @livewire('ChatBot')
+        
 
         @stack('modals')
 
