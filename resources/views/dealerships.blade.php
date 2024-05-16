@@ -20,19 +20,19 @@
         
         <link rel="stylesheet" href="{{ asset('css/app.css') }}">
         <!-- Twitter Bootstrs CSS -->
-        <link rel="stylesheet" src="{{ asset('plugins/bootstrap/bootstrap.min.css')}}">
+        <link rel="stylesheet" href="{{ asset('plugins/bootstrap/bootstrap.min.css')}}">
         <!-- Ionicons Fonts Css -->
-        <link rel="stylesheet" src="{{ asset('plugins/ionicons/ionicons.min.css')}}">
+        <link rel="stylesheet" href="{{ asset('plugins/ionicons/ionicons.min.css')}}">
         <!-- animate css -->
-        <link rel="stylesheet" src="{{ asset('plugins/animate-css/animate.css')}}">
+        <link rel="stylesheet" href="{{ asset('plugins/animate-css/animate.css')}}">
         <!-- Hero area slider css-->
-        <link rel="stylesheet" src="{{ asset('plugins/slider/slider.css')}}">
+        <link rel="stylesheet" href="{{ asset('plugins/slider/slider.css')}}">
         <!-- slick slider -->
-        <link rel="stylesheet" src="{{ asset('plugins/slick/slick.css')}}">
+        <link rel="stylesheet" href="{{ asset('plugins/slick/slick.css')}}">
         <!-- Fancybox -->
-        <link rel="stylesheet" src="{{ asset('plugins/facncybox/jquery.fancybox.css')}}">
+        <link rel="stylesheet" href="{{ asset('plugins/facncybox/jquery.fancybox.css')}}">
         <!-- hover -->
-        <link rel="stylesheet" src="{{ asset('plugins/hover/hover-min.css')}}">
+        <link rel="stylesheet" href="{{ asset('plugins/hover/hover-min.css')}}">
 
         <link rel="canonical" href="https://https://demo.themesberg.com/landwind/" />
         <meta charset="UTF-8">
@@ -186,7 +186,7 @@ Portfolio Section Start
             <div class="overlay">
               <div class="buttons">
                 <a rel="gallery" class="fancybox" src="{{ asset('template/landwind-main/images/dealership01.jpg') }}">Demo</a>
-                <a target="_blank" href="single-portfolio.html">Details</a>
+                <a target="_blank" href="#">Details</a>
               </div>
             </div>
           </div>
@@ -205,11 +205,11 @@ Portfolio Section Start
       <div class="col-md-4 col-sm-6">
         <figure class="wow fadeInLeft animated" data-wow-duration="500ms" data-wow-delay="300ms">
           <div class="img-wrapper">
-            <img src="images/dealership02.jpg" class="img-fluid" alt="this is a title" style="height:262px;">
+            <img src="{{ asset('template/landwind-main/images/dealership02.jpg') }}" class="img-fluid" alt="this is a title" style="height:262px;">
             <div class="overlay">
               <div class="buttons">
-                <a rel="gallery" class="fancybox" href="images/dealership02.jpg">Demo</a>
-                <a target="_blank" href="single-portfolio.html">Details</a>
+                <a rel="gallery" class="fancybox" href="{{ asset('template/landwind-main/images/dealership02.jpg') }}">Demo</a>
+                <a target="_blank" href="#">Details</a>
               </div>
             </div>
           </div>
@@ -228,10 +228,10 @@ Portfolio Section Start
       <div class="col-md-4 col-sm-6">
         <figure class="wow fadeInLeft animated" data-wow-duration="500ms" data-wow-delay="300ms">
           <div class="img-wrapper">
-            <img src="images/dealership03.jpg" class="img-fluid" alt="" style="height:262px;">
+            <img src="{{ asset('template/landwind-main/images/dealership03.jpg') }}" class="img-fluid" alt="" style="height:262px;">
             <div class="overlay">
               <div class="buttons">
-                <a rel="gallery" class="fancybox" href="images/dealership03.jpg">Demo</a>
+                <a rel="gallery" class="fancybox" href="{{ asset('template/landwind-main/images/dealership03.jpg') }}">Zoom</a>
                 <a target="_blank" href="single-portfolio.html">Details</a>
               </div>
             </div>
@@ -251,10 +251,10 @@ Portfolio Section Start
       <div class="col-md-4 col-sm-6">
         <figure class="wow fadeInLeft animated" data-wow-duration="500ms" data-wow-delay="600ms">
           <div class="img-wrapper">
-            <img src="images/dealership04.jpg" class="img-fluid" alt="" style="height:262px;">
+            <img src="{{ asset('template/landwind-main/images/dealership04.jpg') }}" class="img-fluid" alt="" style="height:262px;">
             <div class="overlay">
               <div class="buttons">
-                <a rel="gallery" class="fancybox" href="images/dealership04.jpg">Demo</a>
+                <a rel="gallery" class="fancybox" href="{{ asset('template/landwind-main/images/dealership04.jpg') }}">Demo</a>
                 <a target="_blank" href="single-portfolio.html">Details</a>
               </div>
             </div>
@@ -274,11 +274,11 @@ Portfolio Section Start
       <div class="col-md-4 col-sm-6">
         <figure class="wow fadeInLeft animated" data-wow-duration="500ms" data-wow-delay="900ms">
           <div class="img-wrapper">
-            <img src="images/dealership05.jpg" class="img-fluid" alt="" style="height:262px;">
+            <img src="{{ asset('template/landwind-main/images/dealership05.jpg') }}" class="img-fluid" alt="" style="height:262px;">
             <div class="overlay">
               <div class="buttons">
-                <a rel="gallery" class="fancybox" href="images/dealership05.jpg">Demo</a>
-                <a target="_blank" href="single-portfolio.html">Details</a>
+                <a rel="gallery" class="fancybox" href="{{ asset('template/landwind-main/images/dealership05.jpg') }}">Demo</a>
+                <a target="_blank" href="#">Details</a>
               </div>
             </div>
           </div>
@@ -297,11 +297,11 @@ Portfolio Section Start
       <div class="col-md-4 col-sm-6">
         <figure class="wow fadeInLeft animated" data-wow-duration="500ms" data-wow-delay="1200ms">
           <div class="img-wrapper">
-            <img src="images/dealership06.jpg" class="img-fluid" alt="" style="height:262px;">
+            <img src="{{ asset('template/landwind-main/images/dealership06.jpg') }}" class="img-fluid" alt="" style="height:262px;">
             <div class="overlay">
               <div class="buttons">
-                <a rel="gallery" class="fancybox" href="images/dealership06.jpg">Demo</a>
-                <a target="_blank" href="single-portfolio.html">Details</a>
+                <a rel="gallery" class="fancybox" href="{{ asset('template/landwind-main/images/dealership06.jpg') }}">Demo</a>
+                <a target="_blank" href="#">Details</a>
               </div>
             </div>
           </div>
@@ -411,24 +411,6 @@ Portfolio Section Start
 </section> <!-- /#feature -->
 }
 
-            <!--
-            ==================================================
-            Call To Action Section Start
-            ================================================== -->
-            <section id="call-to-action">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-md-12">
-                            <div class="block">
-                                <h2 class="title wow fadeInDown" data-wow-delay=".3s" data-wow-duration="500ms">SO WHAT YOU THINK ?</h1>
-                                <p class="wow fadeInDown" data-wow-delay=".5s" data-wow-duration="500ms">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nobis,<br>possimus commodi, fugiat magnam temporibus vero magni recusandae? Dolore, maxime praesentium.</p>
-                                <a href="contact.html" class="btn btn-default btn-contact wow fadeInDown" data-wow-delay=".7s" data-wow-duration="500ms">Contact With Me</a>
-                            </div>
-                        </div>
-                        
-                    </div>
-                </div>
-            </section>
 
 
             <!-- Start block -->
