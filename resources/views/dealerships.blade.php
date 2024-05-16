@@ -18,7 +18,7 @@
         <meta name="theme-name" content="timer" />
 
         
-        <link rel="stylesheet" src="{{ asset('css/app.css') }}">
+        <link rel="stylesheet" href="{{ asset('css/app.css') }}">
         <!-- Twitter Bootstrs CSS -->
         <link rel="stylesheet" src="{{ asset('plugins/bootstrap/bootstrap.min.css')}}">
         <!-- Ionicons Fonts Css -->
