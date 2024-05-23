@@ -15,6 +15,13 @@ use Laravel\Fortify\Features;
 use Laravel\Fortify\Fortify;
 use Laravel\Fortify\Http\Requests\LoginRequest;
 use Illuminate\Support\Facades\Auth;
+use constGuards;
+use constDefaults;
+use App\Models\Admin;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Str;
+use Illuminate\Support\Carbon;
 
 use App\Actions\Fortify\RedirectIfTwoFactorAuthenticatable;
 use App\Actions\Fortify\AttemptToAuthenticate;
@@ -166,5 +173,71 @@ class AdminController extends Controller
         Auth::guard('admin')->logout();
         session()->flash('fail', 'You are logged out.');
         return redirect()->route('admin.login');
+    }
+
+    public function sendPasswordResetLink(Request $request){
+        $request->validate([
+            'email'=>'required|email|exists:admins,email'
+        ],[
+            'email.required'=>'The :attribute is required',
+            'email.email'=>'Invalid email address',
+            'email.exists'=>'The :attribute does not exist in system'
+        ]);
+
+        //Get admin details
+        $admin = Admin::where('email',$request->email)->first();
+
+        //Generate token
+        $token = base64_encode(Str::random(64));
+
+        //Check if there is an existing reset password token
+        $oldToken = DB::table('password_reset_tokens')
+                        ->where(['email'=>$request->email,'guard'=>constGuards::ADMIN])
+                        ->first();
+
+        if( $oldToken ){
+            //Update Token
+            DB::table('password_reset_tokens')
+                ->where(['email'=>$request->email,'guard'=>constGuards::ADMIN])
+                ->update([
+                'token'=>$token,
+                'created_at'=>Carbon::now()
+                ]);
+        }else{
+            //add new token
+            DB::table('password_reset_tokens')->insert([
+                'email'=>$request->email,
+                'guard'=>constGuards::ADMIN,
+                'token'=>$token,
+                'created_at'=>Carbon::now()
+            ]);
+        }
+
+        $actionLink = route('admin.reset-password',['token'=>$token,'email'=>$request->email]);
+
+        $data = array(
+            'actionLink'=>$actionLink,
+            'admin'=>$admin
+        );
+
+        $mail_body = view('email-templates.admin-forgot-email-template', $data)->render();
+
+        $mailConfig = array(
+            'mail_from_email'=>env('EMAIL_FROM_ADDRESS'),
+            'mail_from_name'=>env('EMAIL_FROM_NAME'),
+            'mail_recipient_email'=>$admin->email,
+            'mail_recipient_name'=>$admin->name,
+            'mail_subject'=>'Reset Password',
+            'mail_body'=>$mail_body
+        );
+
+        if( sendEmail($mailConfig) ){
+            session()->flash('success','We have emailed your password reset link');
+            return redirect()->route('admin.forgot-password');
+        }else{
+            session()->flash('fail','Something went wrong');
+            return redirect()->route('admin.forgot-password');
+        }
+
     }
 }
