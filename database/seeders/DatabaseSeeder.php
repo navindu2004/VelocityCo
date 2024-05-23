@@ -18,6 +18,9 @@ class DatabaseSeeder extends Seeder
         \App\Models\Vehicle::factory(10)->create();
         \App\Models\Admin::factory()->create();
 
+        $this->call([
+            AdminSeeder::class
+        ]);
 
     }
 }
