@@ -18,6 +18,19 @@ return [
         'passwords' => 'users',
     ],
 
+    'admin' => [
+        'driver'=>'eloquent',
+        'model'=>App\Models\Admin::class,
+    ],
+    'client' => [
+        'driver'=>'eloquent',
+        'model'=>App\Models\Client::class,
+    ],
+    'seller' => [
+        'driver'=>'eloquent',
+        'model'=>App\Models\Seller::class,
+    ],
+
     /*
     |--------------------------------------------------------------------------
     | Authentication Guards
@@ -43,6 +56,14 @@ return [
         'admin' => [
             'driver' => 'session',
             'provider' => 'admins',
+        ],
+        'client' => [
+            'driver' => 'session',
+            'provider' => 'clients',
+        ],
+        'seller' => [
+            'driver' => 'session',
+            'provider' => 'sellers',
         ],
     ],
 
@@ -71,6 +92,16 @@ return [
         'admins' => [
             'driver' => 'eloquent',
             'model' => App\Models\Admin::class,
+        ],
+
+        'clients' => [
+            'driver' => 'eloquent',
+            'model' => App\Models\Client::class,
+        ],
+
+        'sellers' => [
+            'driver' => 'eloquent',
+            'model' => App\Models\Seller::class,
         ],
 
         // 'users' => [
@@ -106,11 +137,21 @@ return [
             'throttle' => 60,
         ],
         'admins' => [
-            'provider' => 'admins',
-            'table' => 'password_reset_tokens',
-            'expire' => 60,
-            'throttle' => 60,
+            // 'provider' => 'admins',
+            // 'table' => 'password_reset_tokens',
+            // 'expire' => 60,
+            // 'throttle' => 60,
+            'driver'=>'eloquent',
+            'model'=>App\Models\Admin::class,
         ],
+        'clients' => [
+            'driver'=>'eloquent',
+            'model'=>App\Models\Client::class,
+        ],
+        'sellers' => [
+            'driver'=>'eloquent',
+            'model'=>App\Models\Seller::class,
+        ]
     ],
 
     /*
