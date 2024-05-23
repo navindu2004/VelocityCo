@@ -73,9 +73,11 @@ Route::middleware([
 
     Route::post('/reset-password/{email}', [PasswordResetController::class, 'resetPassword'])->name('password.reset');
 
-
-
+    
 
 
 
 });
+
+Route::view('/example-page','example-page');
+Route::view('/example-auth','example-auth');
