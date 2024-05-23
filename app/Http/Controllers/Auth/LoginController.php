@@ -5,7 +5,8 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Http\Request;
-use App\Providers\RouteServiceProvider;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 
 class LoginController extends Controller
 {
@@ -48,18 +49,33 @@ class LoginController extends Controller
             'password' => 'required',
         ]);
 
-        if(auth()->attempt(array('email' => $input['email'], 'password' => $input['password'])))
-        {
-            if (auth()->user()->type == 'admin') {
-                return redirect()->route('admin.home');
-            } else if (auth()->user()->type == 'manager') {
-                return redirect()->route('manager.home');
-            } else{
-                return redirect()->route('home');
+        // Debug information for checking input values
+        logger()->info('Attempting to login with:', ['email' => $input['email'], 'password' => $input['password']]);
+
+        // Check if user exists and password is correct
+        $user = \App\Models\User::where('email', $input['email'])->first();
+
+        if ($user && Hash::check($input['password'], $user->password)) {
+            // Attempt to authenticate the user
+            if (Auth::attempt(['email' => $input['email'], 'password' => $input['password']])) {
+                logger()->info('User authenticated successfully', ['user_id' => $user->id]);
+
+                if (auth()->user()->type == 'admin') {
+                    return redirect()->route('admin.home');
+                } elseif (auth()->user()->type == 'manager') {
+                    return redirect()->route('manager.home');
+                } else {
+                    return redirect()->route('home');
+                }
+            } else {
+                logger()->error('Authentication failed despite correct password');
+                return redirect()->route('login')
+                    ->with('error', 'Authentication failed, please try again.');
             }
-        }else{
+        } else {
+            logger()->warning('Invalid login attempt', ['email' => $input['email']]);
             return redirect()->route('login')
-                ->with('error','Email-Address And Password Are Wrong.');
+                ->with('error', 'Email-Address And Password Are Wrong.');
+        }
     }
-}
 }

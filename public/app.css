@@ -269,9 +269,9 @@
  
  #hero-area {
    background: url("{{ asset('template/landwind-main/images/slider.jpg') }}") no-repeat 50%;
-   background-size: cover;
+   background-size: 450px;
    background-attachment: fixed;
-   padding: 200px 0;
+   padding: 200px 200px;
    color: #fff;
    box-shadow: 0 0 8px rgba(0, 0, 0, 0.3);
    position: relative;

@@ -8,6 +8,8 @@ Use App\Http\Controllers\VehicleCategoryController;
 
 use App\Http\Controllers\AdminController;
 
+use App\Http\Controllers\PasswordResetController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -68,6 +70,10 @@ Route::middleware([
     Route::get('/dealerships', function () {
         return view('dealerships');
     })->name('dealerships');
+
+    Route::post('/reset-password/{email}', [PasswordResetController::class, 'resetPassword'])->name('password.reset');
+
+
 
 
 
