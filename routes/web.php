@@ -10,6 +10,8 @@ use App\Http\Controllers\AdminController;
 
 use App\Http\Controllers\PasswordResetController;
 
+use App\Http\Controllers\FrontEndController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -81,3 +83,4 @@ Route::middleware([
 
 Route::view('/example-page','example-page');
 Route::view('/example-auth','example-auth');
+Route::view('/example-frontend','example-frontend');
