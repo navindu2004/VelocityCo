@@ -22,9 +22,9 @@
                             <th>Actions</th>
                         </tr>
                     </thead>
-                    <tbody class="table-border-bottom-0">
+                    <tbody class="table-border-bottom-0" id="sortable_categories">
                         @forelse($categories as $item)
-                        <tr>
+                        <tr data-index="{{ $item->id }}" data-ordering="{{ $item->ordering }}">
                             <td>
                                 <div class="avatar mr-2">
                                     <img src="/images/categories/{{ $item->category_image }}" width="50" height="50" alt="">

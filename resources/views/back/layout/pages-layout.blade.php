@@ -44,7 +44,8 @@
 			href="/back/vendors/styles/icon-font.min.css"
 		/>
 		<link rel="stylesheet" type="text/css" href="/back/vendors/styles/style.css" />
-
+		<link rel="stylesheet" href="/extra-assets/jquery-ui-1.13.3/jquery-ui.min.css">
+		<link rel="stylesheet" href="/extra-assets/jquery-ui-1.13.3/jquery-ui.structure.min.css">
 		
 		<script>
 			(function (w, d, s, l, i) {
@@ -60,8 +61,10 @@
 		</script>
 		<!-- End Google Tag Manager -->
 		<link rel="stylesheet" href="/extra-assets/ijabo/ijaboCropTool.min.css">
+		<link rel="stylesheet" href="/extra-assets/jquery-ui-1.13.3/jquery-ui.min.css">
+		<link rel="stylesheet" href="/extra-assets/jquery-ui-1.13.3/jquery-ui.structure.min.css">
+		<link rel="stylesheet" href="/extra-assets/jquery-ui-1.13.3/jquery-ui.theme.min.css">
 		@livewireStyles
-
         @stack('stylesheets')
 	</head>
 	<body>
@@ -553,6 +556,7 @@
 		</script>
 		<script src="/extra-assets/ijabo/ijaboCropTool.min.js"></script>
 		<script src="/extra-assets/ijabo/jquery-1.7.1.min.js"></script>
+		<script src="/extra-assets/jquery-ui-1.13.3/jquery-ui.min.js"></script>
 		<script>
 			window.addEventListener('showToastr', function(event){
 				toastr.remove();
