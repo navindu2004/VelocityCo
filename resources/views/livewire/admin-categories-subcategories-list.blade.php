@@ -38,7 +38,7 @@
                             </td>
                             <td>
                                 <div class="table-actions">
-                                    <a href="" class="text-primary">
+                                    <a href="{{ route('admin.manage-categories.edit-category',['id'=>$item->id]) }}" class="text-primary">
                                         <i class="dw dw-edit2"></i>
                                     </a>
                                     <a href="" class="text-danger">

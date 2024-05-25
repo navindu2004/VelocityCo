@@ -67,4 +67,74 @@ class CategoriesController extends Controller
         }
         
     }
+
+    public function editCategory(Request $request){
+        $category_id = $request->id;
+        $category = Category::findOrFail($category_id);
+        $data = [
+            'pageTitle'=>'Edit Category',
+            'category'=>$category
+        ];
+        return view('back.pages.admin.edit-category',$data);
+    }
+
+    public function updateCategory(Request $request){
+        $category_id = $request->category_id;
+        $category = Category::findOrFail($category_id);
+
+        //Validate the form
+        $request->validate([
+            'category_name'=>'required|min:5|unique:categories,category_name,'.$category_id,
+            'category_image'=>'nullable|image|mimes:jpeg,png,jpg,svg'
+        ],[
+            'category_name.required'=>':Attribute is required',
+            'category_name.min'=>':Attribute must be at least 5 characters',
+            'category_name.unique'=>':Attribute already exists',
+            'category_image.image'=>':Attribute must be an image',
+            'category_image.mimes'=>':Attribute must be of type jpeg, png, jpg or svg'
+        ]);
+
+        if( $request->hasFile('category_image') ){
+            $path = 'images/categories/';
+            $file = $request->file('category_image');
+            $filename = time().'_'.$file->getClientOriginalName();
+            $old_category_image = $category->category_image;
+
+            //upload new category image
+            $upload = $file->move(public_path($path),$filename);
+
+            if($upload){
+                //delete old category image
+                if(File::exists(public_path($path.$old_category_image))){
+                    File::delete(public_path($path.$old_category_image));
+                }
+                //update category info
+                $category->category_name = $request->category_name;
+                $category->category_image = $filename;
+                $category->category_slug = null;
+                $saved = $category->save();
+
+                if($saved){
+                    return redirect()->route('admin.manage-categories.edit-category',['id'=>$category_id])->with('success','<b>'.ucfirst($request->category_name).'</b> Category updated successfully.');
+                }else{
+                    return redirect()->route('admin.manage-categories.edit-category',['id'=>$category_id])->with('fail','Error in uploading category image');
+                }
+
+            }else{
+                return redirect()->route('admin.manage-categories.edit-category',['id'=>$category_id])->with('fail','Error in uploading cateogory image');
+            }
+
+        }else{
+            //update category info
+            $category->category_name = $request->category_name;
+            $category->category_slug = null;
+            $saved = $category->save();
+
+            if($saved){
+                return redirect()->route('admin.manage-categories.edit-category',['id'=>$category_id])->with('success','<b>'.ucfirst($request->category_name).'</b> Category updated successfully.');
+        }else{
+            return redirect()->route('admin.manage-categories.edit-category',['id'=>$category_id])->with('fail','Something went wrong, please try again.');
+        }
+    }
+}
 }
