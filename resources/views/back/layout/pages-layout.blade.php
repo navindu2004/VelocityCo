@@ -46,6 +46,12 @@
 		<link rel="stylesheet" type="text/css" href="/back/vendors/styles/style.css" />
 		<link rel="stylesheet" href="/extra-assets/jquery-ui-1.13.3/jquery-ui.min.css">
 		<link rel="stylesheet" href="/extra-assets/jquery-ui-1.13.3/jquery-ui.structure.min.css">
+
+		<style>
+			.swal2-popup {
+				font-size: 0.78rem;
+			}
+		</style>
 		
 		<script>
 			(function (w, d, s, l, i) {
@@ -555,7 +561,7 @@
 			}
 		</script>
 		<script src="/extra-assets/ijabo/ijaboCropTool.min.js"></script>
-		<script src="/extra-assets/ijabo/jquery-1.7.1.min.js"></script>
+		<!-- <script src="/extra-assets/ijabo/jquery-1.7.1.min.js"></script> -->
 		<script src="/extra-assets/jquery-ui-1.13.3/jquery-ui.min.js"></script>
 		<script>
 			window.addEventListener('showToastr', function(event){

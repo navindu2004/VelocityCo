@@ -41,7 +41,7 @@
                                     <a href="{{ route('admin.manage-categories.edit-category',['id'=>$item->id]) }}" class="text-primary">
                                         <i class="dw dw-edit2"></i>
                                     </a>
-                                    <a href="" class="text-danger">
+                                    <a href="javascript:;" class="text-danger deleteCategoryBtn" data-id="{{ $item->id }}">
                                         <i class="dw dw-delete-3"></i>
                                     </a>
                                 </div>

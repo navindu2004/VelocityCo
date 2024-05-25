@@ -73,7 +73,7 @@ Route::middleware([
         return view('dealerships');
     })->name('dealerships');
 
-    Route::post('/reset-password/{email}', [PasswordResetController::class, 'resetPassword'])->name('password.reset');
+    // Route::post('/reset-password/{email}', [PasswordResetController::class, 'resetPassword'])->name('password.reset');
 
     
 

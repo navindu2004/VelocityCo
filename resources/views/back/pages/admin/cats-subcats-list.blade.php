@@ -22,5 +22,26 @@
             window.livewire.emit('updateCategoriesOrdering',positions);
         }
     });  //ask sir
+
+$(document).on('click','.deleteCategoryBtn',function(){
+    e.preventDefault();
+    var category_id = $(this).data('id');
+    swal.fire({
+        title:'Are you sure?',
+        html:'You want to delete this category',
+        showCloseButton:true,
+        showCancelButton:true,
+        cancelButtonText:'Cancel',
+        confirmButtonText:'Yes, Delete',
+        cancelButtonColor:'#d33',
+        confirmButtonColor:'#3085d6',
+        width:300,
+        allowOutsideClick:false
+    }).then(function(result){
+        if(result.value){
+            window.livewire.emit('deleteCategory',category_id);
+        }
+    });
+});
 </script>
 @endpush
