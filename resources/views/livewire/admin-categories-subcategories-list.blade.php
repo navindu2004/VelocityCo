@@ -69,7 +69,7 @@
                     <h4 class="h4 text-blue">Sub-Categories</h4>
                 </div>
                 <div class="pull-right">
-                    <a href="" class="btn btn-primary btn-sm" type="button">
+                    <a href="{{ route('admin.manage-categories.add-subcategory') }}" class="btn btn-primary btn-sm" type="button">
                         <i class="fa fa-plus"></i> Add New Sub Category (Type of vehicle)
                     </a>
                 </div>
