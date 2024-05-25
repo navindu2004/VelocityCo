@@ -443,6 +443,13 @@
 						</li>
 
 						<li>
+							<a href="{{ route('admin.manage-categories.cats-subcats-list') }}" class="dropdown-toggle no-arrow {{ Route::is('admin.manage-categories.*') ? 'active' : '' }}">
+								<span class="micon dw dw-align-left3"></span
+								><span class="mtext">Manage Categories</span>
+							</a>
+						</li>
+
+						<li>
 							<a href="invoice.html" class="dropdown-toggle no-arrow">
 								<span class="micon bi bi-receipt-cutoff"></span
 								><span class="mtext">Invoice</span>

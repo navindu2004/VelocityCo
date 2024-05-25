@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\Admin\CategoriesController;
 
 Route::prefix('admin')->name('admin.')->group(function(){
 
@@ -18,6 +19,14 @@ Route::prefix('admin')->name('admin.')->group(function(){
         Route::view('/home', 'back.pages.admin.home')->name('home');
         Route::post('/logout_handler',[AdminController::class,'logoutHandler'])->name('logout_handler');
         Route::get('/profile', [AdminController::class, 'profileView'])->name('profile');
+
+
+        //CATEGORIES AND SUB CATEGORIES MANAGEMENT
+        Route::prefix('manage-categories')->name('manage-categories.')->group(function(){
+            Route::controller(CategoriesController::class)->group(function(){
+                Route::get('/','catSubcatList')->name('cats-subcats-list');
+            });
+        });
     });
 
 });
