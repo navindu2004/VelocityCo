@@ -46,8 +46,8 @@
 @push('scripts')
 <script>
     window.addEventListener('updateAdminInfo', function(event){
-        $('#adminProfileName').html(event.detail.adminName);
-        $('#adminProfileEmail').html(event.detail.adminEmail);
+        $('#adminProfileName').html(event.detail[0].adminName);
+        $('#adminProfileEmail').html(event.detail[0].adminEmail);
     });
 </script>
 @endpush

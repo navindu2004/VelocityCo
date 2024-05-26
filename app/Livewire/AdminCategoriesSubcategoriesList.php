@@ -113,7 +113,7 @@ class AdminCategoriesSubcategoriesList extends Component
     }
 
     public function showToastr($type, $message){
-        return $this->dispatchBrowserEvent('showToastr',[
+        return $this->dispatch('showToastr',[
             'type'=>$type,
             'message'=>$message
         ]);

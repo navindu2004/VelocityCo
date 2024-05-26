@@ -19,7 +19,7 @@
                 positions.push([$(this).attr('data-index'),$(this).attr('data-ordering')]);
                 $(this).removeClass('updated');
             });
-            window.livewire.emit('updateCategoriesOrdering',positions);
+            Livewire.dispatch('updateCategoriesOrdering',[positions]);
         }
     });  //ask sir
 
@@ -39,7 +39,7 @@ $(document).on('click','.deleteCategoryBtn',function(){
         allowOutsideClick:false
     }).then(function(result){
         if(result.value){
-            window.livewire.emit('deleteCategory',category_id);
+            Livewire.dispatch('deleteCategory',[category_id]);
         }
     });
 });
@@ -57,7 +57,7 @@ $('table tbody#sortable_subcategories').sortable({
             positions.push([$(this).attr('data-index'),$(this).attr('data-ordering')]);
             $(this).removeClass('updated');
         });
-        window.livewire.emit('updateSubCategoriesOrdering',positions);
+        Livewire.dispatch('updateSubCategoriesOrdering',[positions]);
     }
 });  //ask sir
 
@@ -74,7 +74,7 @@ $('ul#sortable_child_subcategories').sortable({
             positions.push([$(this).attr('data-index'),$(this).attr('data-ordering')]);
             $(this).removeClass('updated');
         });
-        window.livewire.emit('updateChildSubCategoriesOrdering',positions);
+        Livewire.dispatch('updateChildSubCategoriesOrdering',[positions]);
     }
 });
 
@@ -95,7 +95,7 @@ $(document).on('click','.deleteSubCategoryBtn,.deleteChildSubCategoryBtn', funct
         allowOutsideClick:false
     }).then(function(result){
         if(result.value){
-            window.livewire.emit('deleteSubCategory',subcategory_id);
+            Livewire.dispatch('deleteSubCategory',[subcategory_id]);
         }
     });
 });
