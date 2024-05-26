@@ -10,7 +10,9 @@ class AdminCategoriesSubcategoriesList extends Component
 {
     protected $listeners = [
         'updateCategoriesOrdering',
-        'deleteCategory'
+        'deleteCategory',
+        'updateSubCategoriesOrdering',
+        'updateChildSubCategoriesOrdering',
     ];
 
     public function updateCategoriesOrdering($positions)
@@ -22,6 +24,30 @@ class AdminCategoriesSubcategoriesList extends Component
         ]);
 
         $this->showToastr('success','Categories ordering updated successfully');
+        }
+    }
+
+    public function updateSubCategoriesOrdering($positions)
+    {
+        foreach($positions as $position){
+            $index = $position[0];
+            $newPosition = $position[1];
+            Subcategory::where('id',$index)->update(['ordering'=>$newPosition
+        ]);
+
+        $this->showToastr('success','Subcategories ordering updated successfully');
+        } //ask sir
+    }
+
+    public function updateChildSubCategoriesOrdering($positions)
+    {
+        foreach($positions as $position){
+            $index = $position[0];
+            $newPosition = $position[1];
+            Subcategory::where('id',$index)->update(['ordering'=>$newPosition
+        ]);
+
+        $this->showToastr('success','Child subcategories ordering updated successfully');
         }
     }
 

@@ -84,11 +84,11 @@
                             <th>Actions</th>
                         </tr>
                     </thead>
-                    <tbody class="table-border-bottom-0">
+                    <tbody class="table-border-bottom-0" id="sortable_subcategories">
 
                     @forelse($subcategories as $item)
 
-                        <tr>
+                        <tr data-index="{{ $item->id }}" data-ordering="{{ $item->ordering }}">
                             <td>
                                 {{$item->subcategory_name}}
                             </td>
@@ -97,13 +97,13 @@
                             </td>
                             <td>
                                 @if ($item->children->count() > 0)
-                                <ul class="list-group">
+                                <ul class="list-group" id="sortable_child_subcategories">
                                     @foreach ($item->children as $child)
-                                    <li class="d-flex justify-content-between align-items-center">
+                                    <li data-index="{{ $child->id }}" data-ordering="{{ $child->ordering}}" class="d-flex justify-content-between align-items-center">
                                         {{$child->subcategory_name}}
                                     <div>
                                         <a href="{{ route('admin.manage-categories.edit-subcategory',['id'=>$child->id]) }}" class="text-primary" data-toggle="tooltip" title="Edit child sub category">Edit</a>
-                                        <a href="#" class="text-danger" data-toggle="tooltip" title="Delete child sub category">Delete</a>
+                                        <a href="javascript:;" class="text-danger deleteChildSubCategoryBtn" data-toggle="tooltip" title="Delete child sub category" data-id="{{$child->id}}" data-title="Child Sub Category">Delete</a>
                                     </div>
                                     </li>
                                     @endforeach
@@ -117,7 +117,7 @@
                                     <a href="{{ route('admin.manage-categories.edit-subcategory',['id'=>$item->id]) }}" class="text-primary">
                                         <i class="dw dw-edit2"></i>
                                     </a>
-                                    <a href="" class="text-danger">
+                                    <a href="javascript:;" class="text-danger deleteSubCategoryBtn" data-id="{{ $item->id }}" data-title="Sub Category">
                                         <i class="dw dw-delete-3"></i>
                                     </a>
                                 </div>
