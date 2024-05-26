@@ -176,4 +176,52 @@ public function storeSubCategory(Request $request){
         return redirect()->route('admin.manage-categories.add-subcategory')->with('fail','Something went wrong, please try again.');
     }
 }
+
+public function editSubCategory(Request $request){
+    $subcategory_id = $request->id;
+    $subcategory = SubCategory::findOrFail($subcategory_id);
+    $independent_subcategories = SubCategory::where('is_child_of',0)->get();
+    $data = [
+        'pageTitle'=>'Edit Sub Category',
+        'categories'=>Category::all(),
+        'subcategory'=>$subcategory,
+        'subcategories'=>(!empty($independent_subcategories)) ? $independent_subcategories : []
+    ];
+    return view('back.pages.admin.edit-subcategory',$data);
+}
+
+public function updateSubCategory(Request $request){
+    $subcategory_id = $request->subcategory_id;
+    $subcategory = SubCategory::findOrFail($subcategory_id);
+
+    //validate the form
+    $request->validate([
+        'parent_category'=>'required|exists:categories,id',
+        'subcategory_name'=>'required|min:5|unique:sub_categories,subcategory_name,'.$subcategory_id,
+    ],[
+        'parent_category.required'=>':Attribute is required',
+        'parent_category.exists'=>':Attribute does not exist in categories table',
+        'subcategory_name.required'=>':Attribute is required',
+        'subcategory_name.min'=>':Attribute must be at least 5 characters',
+        'subcategory_name.unique'=>':Attribute already exists'
+    ]);
+
+    //check if this sub category has children
+    if( $subcategory->children->count() && $request->is_child_of !=0){
+        return redirect()->route('admin.manage-categories.edit-subcategory',['id'=>$subcategory_id])->with('fail','This sub category has ('.$subcategory->children()->count().') children. You cannot change its parent category.');
+    }else{
+        //update category info
+        $subcategory->category_id = $request->parent_category;
+        $subcategory->subcategory_name = $request->subcategory_name;
+        $subcategory->is_child_of = $request->is_child_of;
+        $saved = $subcategory->save();
+
+        if( $saved ){
+            return redirect()->route('admin.manage-categories.edit-subcategory',['id'=>$subcategory_id])->with('success','<b>'.ucfirst($request->subcategory_name).'</b> Sub category updated successfully.');
+        }else{
+            return redirect()->route('admin.manage-categories.edit-subcategory',['id'=>$subcategory_id])->with('fail','Something went wrong, please try again.');
+        }
+    }
+}
+
 }

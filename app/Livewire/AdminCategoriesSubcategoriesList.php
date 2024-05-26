@@ -5,6 +5,7 @@ namespace App\Livewire;
 use Livewire\Component;
 use App\Models\Category;
 use Illuminate\Support\Facades\File;
+use App\Models\Subcategory;
 class AdminCategoriesSubcategoriesList extends Component
 {
     protected $listeners = [
@@ -46,7 +47,8 @@ class AdminCategoriesSubcategoriesList extends Component
     public function render()
     {
         return view('livewire.admin-categories-subcategories-list',[
-            'categories'=>Category::orderBy('ordering','asc')->get()
+            'categories'=>Category::orderBy('ordering','asc')->get(),
+            'subcategories'=>SubCategory::where('is_child_of',0)->orderBy('ordering','asc')->get()
         ]);
     }
 }
