@@ -6,8 +6,13 @@ use Livewire\Component;
 use App\Models\Category;
 use Illuminate\Support\Facades\File;
 use App\Models\Subcategory;
+use Livewire\WithPagination;
 class AdminCategoriesSubcategoriesList extends Component
 {
+    use WithPagination;
+
+    public $categoriesPerPage = 5;
+    public $subcategoriesPerPage = 3;
     protected $listeners = [
         'updateCategoriesOrdering',
         'deleteCategory',
@@ -58,6 +63,15 @@ class AdminCategoriesSubcategoriesList extends Component
         $category_image = $category->category_image;
 
         //check if this category has subcategories
+        if($category->subcategories->count() > 0){
+            //check if one of these subcategories has related product(s)
+
+            //delete sub categories
+            foreach( $category->subcategories as $subcategory ){
+                $subcategory = Subcategory::findOrFail($subcategory->id);
+                $subcategory->delete();
+            }
+        }
 
         //delete category image
         if(File::exists(public_path($path.$category_image))){
@@ -107,8 +121,8 @@ class AdminCategoriesSubcategoriesList extends Component
     public function render()
     {
         return view('livewire.admin-categories-subcategories-list',[
-            'categories'=>Category::orderBy('ordering','asc')->get(),
-            'subcategories'=>SubCategory::where('is_child_of',0)->orderBy('ordering','asc')->get()
+            'categories'=>Category::orderBy('ordering','asc')->paginate($this->categoriesPerPage,['*'],'categoriesPage'),
+            'subcategories'=>SubCategory::where('is_child_of',0)->orderBy('ordering','asc')->paginate($this->subcategoriesPerPage,['*'],'subcategoriesPage')
         ]);
     }
 }
