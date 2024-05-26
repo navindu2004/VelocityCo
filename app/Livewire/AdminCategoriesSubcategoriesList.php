@@ -13,6 +13,7 @@ class AdminCategoriesSubcategoriesList extends Component
         'deleteCategory',
         'updateSubCategoriesOrdering',
         'updateChildSubCategoriesOrdering',
+        'deleteSubCategory',
     ];
 
     public function updateCategoriesOrdering($positions)
@@ -61,6 +62,39 @@ class AdminCategoriesSubcategoriesList extends Component
         //delete category image
         if(File::exists(public_path($path.$category_image))){
             File::delete($path.$category_image);
+        }
+
+        //delete category from db
+        $delete = $category->delete();
+
+        if( $delete ){
+            $this->showToastr('success','Category deleted successfully');
+        }else{
+            $this->showToastr('error','Something went wrong, please try again');
+        }
+    }
+
+    public function deleteSubCategory($subcategory_id){
+        $subcategory = Subcategory::findOrFail($subcategory_id);
+        
+        //when this sub category has child sub categories
+        if( $subcategory->children->count() > 0){
+            //check if there is/are products related to one of child sub categories
+
+            //if no product(s) related to child sub categories, delete them
+            foreach($subcategory->children as $child){
+                SubCategory::where('id',$child->id)->delete();
+            }
+
+            //delete sub category
+            $subcategory->delete();
+            $this->showToastr('success','Subcategory deleted successfully');
+        }else{
+            //check if this sub category has products related to it
+
+            //delete sub category
+            $subcategory->delete();
+            $this->showToastr('success','Subcategory deleted successfully');
         }
     }
 

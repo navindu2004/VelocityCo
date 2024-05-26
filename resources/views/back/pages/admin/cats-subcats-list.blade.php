@@ -77,5 +77,27 @@ $('ul#sortable_child_subcategories').sortable({
         window.livewire.emit('updateChildSubCategoriesOrdering',positions);
     }
 });
+
+$(document).on('click','.deleteSubCategoryBtn,.deleteChildSubCategoryBtn', function(e){
+    e.preventDefault();
+    var subcategory_id = $(this).data('id');
+    var title = $(this).data('title');
+    swal.fire({
+        title:'Are you sure?',
+        html:'You want to delete this '+title,
+        showCloseButton:true,
+        showCancelButton:true,
+        cancelButtonText:'Cancel',
+        confirmButtonText:'Yes, Delete',
+        cancelButtonColor:'#d33',
+        confirmButtonColor:'#3085d6',
+        width:300,
+        allowOutsideClick:false
+    }).then(function(result){
+        if(result.value){
+            window.livewire.emit('deleteSubCategory',subcategory_id);
+        }
+    });
+});
 </script>
 @endpush
