@@ -2,6 +2,8 @@
 
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
+use App\Models\Category;
+use App\Models\SubCategory;
 
 
 /**SEND EMAIL FUNCTION USING PHPMAILER LIBRARY */
@@ -30,5 +32,15 @@ if(!function_exists('sendEmail') ){
         } else{
             return false;
         }
+    }
+}
+
+
+//FRONTEND::
+/**GET FRONT END CATEGORIES */
+if( !function_exists('get_categories') ){
+    function get_categories(){
+        $categories = Category::with('subcategories')->orderBy('ordering','asc')->get();
+        return !empty($categories) ? $categories : [];
     }
 }

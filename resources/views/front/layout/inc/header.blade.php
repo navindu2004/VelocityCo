@@ -123,3 +123,92 @@
 			<!-- /MAIN HEADER -->
 		</header>
 		<!-- /HEADER -->
+
+		<!-- NAVIGATION -->
+		<nav id="navigation">
+			<!-- container -->
+			<div class="container">
+				<!-- responsive-nav -->
+				<div id="responsive-nav">
+
+					<!-- NAV -->
+
+<div class="container-fluid-lg">
+	<div class="row">
+		<div class="col-12">
+			<div class="header-nav">
+				<div class="header-nav-left">
+					<button class="dropdown-category">
+						<i class="ijaboIcon icon-copy bi bi-list-nested"></i>
+						<span>&nbsp;Browse Categories</span>
+					</button>
+					<div class="category-dropdown">
+						<div class="category-title">
+							<h5>Categories</h5>
+							<button type="button" class="btn p-0 close-button text-content">
+								<i class="fa fa-xmark"></i>
+							</button>
+						</div>
+
+					@if( count(get_categories()) > 0 )
+
+					@foreach(get_categories() as $category)
+
+					
+					<ul class="category-list">
+						<li class="onhover-category-list">
+							<a href="javascript:void(0)" class="category-name">
+								<h6>{{ $category->category_name }}</h6>
+
+								@if( count($category->subcategories) > 0 )
+								<i class="fa fa-angle-right"></i>
+								@endif
+							</a>
+
+							@if( count($category->subcategories) > 0)
+							<div class="onhover-category-box">
+								@foreach ($category->subcategories as $subcategory)
+								@if($subcategory->is_child_of == 0)
+
+								<div class="list">
+									<div class="category-title-box">
+										<a href="javascript:void(0)">
+											<h5>{{$subcategory->subcategory_name}}</h5>
+										</a>
+									</div>
+
+									@if( count($subcategory->children) > 0 )
+									<ul>
+										@foreach($subcategory->children as $child_subcategory)
+										<li>
+											<a href="javascript:void(0)">
+												{{$child_subcategory->subcategory_name}}
+											</a>
+										</li>
+										@endforeach
+									</ul>
+									@endif
+								</div>
+								@endif
+								@endforeach
+								
+                            </div>
+							@endif
+						</li>
+					</ul>
+
+					@endforeach
+					@endif
+					<!-- /NAV -->
+				</div>
+				<!-- /responsive-nav -->
+			</div>
+			</div>
+			</div>
+			</div>
+			</div>
+			</div>
+			</div>
+			<!-- /container -->
+		</nav>
+		<!-- /NAVIGATION -->
