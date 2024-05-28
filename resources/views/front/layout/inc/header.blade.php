@@ -133,7 +133,7 @@
 
 					<!-- NAV -->
 
-<div class="container-fluid-lg">
+<!-- <div class="container-fluid-lg">
 	<div class="row">
 		<div class="col-12">
 			<div class="header-nav">
@@ -199,7 +199,7 @@
 
 					@endforeach
 					@endif
-					<!-- /NAV -->
+					 /NAV -->
 				</div>
 				<!-- /responsive-nav -->
 			</div>
