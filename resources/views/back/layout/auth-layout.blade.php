@@ -60,7 +60,12 @@
 				<div class="login-menu">
 					<ul>
 						@if ( !Route::is('admin.*') )
-						<li><a href="register.html">Register</a></li>
+
+						@if (Route::is('seller.login') )
+						<li><a href="{{ route('seller.register') }}">Register</a></li>
+						@else
+						<li><a href="{{ route('seller.login') }}">Login</a></li>
+						@endif
 						@endif
 					</ul>
 				</div>
