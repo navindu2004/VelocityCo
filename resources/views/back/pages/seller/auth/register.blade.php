@@ -8,7 +8,7 @@
     </div>
     <form action="{{ route('seller.create') }}" method="POST">
         @csrf
-        <x-alert.form-alert />
+        <x-alert.form-alert/>
 
         <div class="form-group">
             <label for="">Full name: </label>
