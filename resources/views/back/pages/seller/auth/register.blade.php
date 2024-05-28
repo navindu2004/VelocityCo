@@ -34,14 +34,6 @@
         </div>
 
         <div class="form-group">
-            <label for="">Password: </label>
-            <input type="password" name="password" class="form-control" placeholder="Enter password">
-            @error('password')
-            <span class="text-danger">{{ $message }}</span>
-            @enderror
-        </div>
-
-        <div class="form-group">
             <label for="">Confirm Password: </label>
             <input type="password" name="confirm_password" class="form-control" placeholder="Retype Password">
             @error('confirm_password')

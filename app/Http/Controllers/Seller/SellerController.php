@@ -65,8 +65,8 @@ class SellerController extends Controller
             $mail_body = view('email-templates.seller-verify-template',$data)->render();
 
             $mailConfig = array(
-                'mail_from_email'=>env('EMAIL_FROM_ADDRESS'),
-                'mail_from_name'=>env('EMAIL_FROM_NAME'),
+                'mail_from_email'=>env('MAIL_FROM_ADDRESS'),
+                'mail_from_name'=>env('MAIL_FROM_NAME'),
                 'mail_recipient_email'=>$request->email,    
                 'mail_recipient_name'=>$request->name,
                 'mail_subject'=>'Verify Seller account',
