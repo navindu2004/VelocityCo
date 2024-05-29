@@ -12,6 +12,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Carbon;
 use constGuards;
 use constDefaults;
+use Illuminate\Support\Facades\DB;
 
 class SellerController extends Controller
 {
@@ -187,5 +188,112 @@ class SellerController extends Controller
         $oldToken = DB::table('password_reset_tokens')
                     ->where(['email'=>$seller->email,'guard'=>constGuards::SELLER])
                     ->first();
+
+        if( $oldToken ){
+            //update existing token
+            DB::table('password_reset_tokens')
+                ->where(['email'=>$seller->email,'guard'=>constGuards::SELLER])
+                ->update([
+                    'token'=>$token,
+                    'created_at'=>Carbon::now()
+                ]);
+        }else{
+            //insert new reset password token
+            DB::table('password_reset_tokens')
+                ->insert([
+                    'email'=>$seller->email,
+                    'token'=>$token,
+                    'guard'=>constGuards::SELLER,
+                    'created_at'=>Carbon::now()
+                ]);
+        }
+
+        $actionLink = route('seller.reset-password',['token'=>$token,'email'=>urlencode($seller->email)]);
+
+        $data['actionLink'] = $actionLink;
+        $data['seller'] = $seller;
+        $mail_body = view('email-templates.seller-forgot-email-template',$data)->render();
+
+        $mailConfig = array(
+            'mail_from_email'=>env('MAIL_FROM_ADDRESS'),
+            'mail_from_name'=>env('MAIL_FROM_NAME'),
+            'mail_recipient_email'=>$seller->email,
+            'mail_recipient_name'=>$seller->name,
+            'mail_subject'=>'Reset Password',
+            'mail_body'=>$mail_body
+        );
+
+        if( sendEmail($mailConfig) ){
+            return redirect()->route('seller.forgot-password')->with('success','Password reset link sent to your email');
+        }else{
+            return redirect()->route('seller.forgot-password')->with('fail','Something went wrong');
+        }
     }
+
+    public function showResetForm(Request $request, $token = null){
+        //check if token exists
+        $get_token = DB::table('password_reset_tokens')
+                    ->where(['token'=>$token,'guard'=>constGuards::SELLER])
+                    ->first();
+        
+        if( $get_token ){
+            //check if this token is not expired
+            $diffMins = Carbon::createFromFormat('Y-m-d H:i:s',$get_token->created_at)->diffInMinutes(Carbon::now());
+
+            if( $diffMins > constDefaults::tokenExpiredMinutes ){
+                //when token is older than 15 minutes
+                return redirect()->route('seller.forgot-password',['token'=>$token])->with('fail','Token expired! Request a new one');
+            }else{
+                return view('back.pages.seller.auth.reset')->with(['token'=>$token]);
+            }
+    }else{
+        return redirect()->route('seller.forgot-password',['token'=>$token])->with('fail','Invalid token or token expired');
+    }
+}
+
+public function resetPasswordHandler(Request $request){
+    //validate the form
+    $request->validate([
+        'new_password'=>'required|min:5|max:45|required_with:confirm_password|same:confirm_password',
+        'confirm_password'=>'required'
+    ]);
+
+    $token = DB::table('password_reset_tokens')
+            ->where(['token'=>$request->token,'guard'=>constGuards::SELLER])
+            ->first();
+
+    //get seller details
+    $seller = Seller::where('email',$token->email)->first();
+
+    //update seller password
+    Seller::where('email',$seller->email)->update([
+        'password'=>Hash::make($request->new_password)
+    ]);
+
+    //delete token record
+
+    DB::table('password_reset_tokens')->where([
+        'email'=>$seller->email,
+        'token'=>$request->token,
+        'guard'=>constGuards::SELLER
+    ])->delete();
+
+    //send email to notify seller for new password
+    $data['seller'] = $seller;
+    $data['new_password'] = $request->new_password;
+
+    $mail_body = view('email-templates.seller-reset-email-template',$data);
+
+    $mailConfig = array(
+        'mail_from_email'=>env('MAIL_FROM_ADDRESS'),
+        'mail_from_name'=>env('MAIL_FROM_NAME'),
+        'mail_recipient_email'=>$seller->email,
+        'mail_recipient_name'=>$seller->name,
+        'mail_subject'=>'Password Reset Successful',
+        'mail_body'=>$mail_body
+    );
+
+    sendEmail($mailConfig);
+    return redirect()->route('seller.login')->with('success','Done! Your password has been changed. Use new password to login to system.');
+}
 }
