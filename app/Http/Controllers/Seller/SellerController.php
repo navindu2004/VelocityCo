@@ -9,6 +9,9 @@ use App\Models\VerificationToken;
 use App\Models\Seller;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Carbon;
+use constGuards;
+use constDefaults;
 
 class SellerController extends Controller
 {
@@ -94,6 +97,7 @@ class SellerController extends Controller
 
             if( !$seller->verified ){
                 $seller->verified = 1;
+                $seller->email_verified_at = Carbon::now();
                 $seller->save();
                 
                 return redirect()->route('seller.login')->with('success','Account verified successfully. Login with your credentials and complete setup your seller account.');
@@ -139,7 +143,13 @@ class SellerController extends Controller
         );
 
         if( Auth::guard('seller')->attempt($creds) ){
-            return redirect()->route('seller.home');
+            //return redirect()->route('seller.home');
+            if( !auth('seller')->user()->verified ){
+                auth('seller')->logout();
+                return redirect()->route('seller.login')->with('fail','Account not verified. Check your email for verification link');
+            }else{
+                return redirect()->route('seller.home');
+            }
         }else{
             return redirect()->route('seller.login')->withInput()->with('fail','Invalid password');
         }
@@ -149,4 +159,33 @@ class SellerController extends Controller
         Auth::guard('seller')->logout();
         return redirect()->route('seller.login')->with('fail','Logged out successfully');
     }//end method
+
+    public function forgotPassword(Request $request){
+        $data = [
+            'pageTitle'=>'Forgot Password'
+        ];
+        return view('back.pages.seller.auth.forgot',$data);
+    }
+
+    public function sendPasswordResetLink(Request $request){
+        //validate the form
+        $request->validate([
+            'email'=>'required|email|exists:sellers,email'
+        ],[
+            'email.required'=>'The :attribute is required',
+            'email.email'=>'Email is invalid',
+            'email.exists'=>'The :attribute does not exist'
+        ]);
+
+        //get seller details
+        $seller = Seller::where('email',$request->email)->first();
+
+        //generate token
+        $token = base64_encode(Str::random(64));
+
+        //check if there is an existing reset password token for this seller
+        $oldToken = DB::table('password_reset_tokens')
+                    ->where(['email'=>$seller->email,'guard'=>constGuards::SELLER])
+                    ->first();
+    }
 }
