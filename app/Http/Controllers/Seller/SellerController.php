@@ -85,6 +85,25 @@ class SellerController extends Controller
         // dd('Create Seller Account');
     }//end method
 
+    public function verifyAccount(Request $request, $token){
+        $verifyToken = VerificationToken::where('token',$token)->first();
+
+        if( !is_null($verifyToken) ){
+            $seller = Seller::where('email',$verifyToken->email)->first();
+
+            if( !$seller->verified ){
+                $seller->verified = 1;
+                $seller->save();
+                
+                return redirect()->route('seller.login')->with('success','Account verified successfully. Login with your credentials and complete setup your seller account.');
+            }else{
+                return redirect()->route('seller.login')->with('info','Account already verified');
+            }
+        }else{
+            return redirect()->route('seller.register')->with('fail','Invalid token');
+        }
+    }
+
     public function registerSuccess(Request $request){
         return view('back.pages.seller.register-success');
     }
