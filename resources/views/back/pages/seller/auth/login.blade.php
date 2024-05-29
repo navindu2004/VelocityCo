@@ -6,7 +6,7 @@
 	<div class="login-title">
 		<h2 class="text-center text-primary">Seller Login</h2>
 	</div><br><br>
-	<form action="" method="POST">
+	<form action="{{ route('seller.login-handler') }}" method="POST">
     @csrf
 <x-alert.form-alert/>
 			

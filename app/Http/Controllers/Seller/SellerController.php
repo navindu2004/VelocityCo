@@ -8,6 +8,7 @@ use Illuminate\Support\Str;
 use App\Models\VerificationToken;
 use App\Models\Seller;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Auth;
 
 class SellerController extends Controller
 {
@@ -107,4 +108,45 @@ class SellerController extends Controller
     public function registerSuccess(Request $request){
         return view('back.pages.seller.register-success');
     }
+
+    public function loginHandler(Request $request){
+        $fieldType = filter_var($request->login_id, FILTER_VALIDATE_EMAIL) ? 'email' : 'username';
+
+        if( $fieldType == 'email' ){
+            $request->validate([
+                'login_id'=>'required|email|exists:sellers,email',
+                'password'=>'required|min:5|max:45'
+            ],[
+                'login_id.required'=>'Email or username is required',
+                'login_id.email'=>'Email or username is invalid',
+                'login_id.exists'=>'Email or username does not exist',
+                'password.required'=>'Password is required',
+            ]);
+        }else{
+            $request->validate([
+                'login_id'=>'required|email|exists:sellers,username',
+                'password'=>'required|min:5|max:45'
+            ],[
+                'login_id.required'=>'Email or username is required',
+                'login_id.exists'=>'Username does not exist',
+                'password.required'=>'Password is required',
+            ]);
+        }
+
+        $creds = array(
+            $fieldType=> $request->login_id,
+            'password' => $request->password
+        );
+
+        if( Auth::guard('seller')->attempt($creds) ){
+            return redirect()->route('seller.home');
+        }else{
+            return redirect()->route('seller.login')->withInput()->with('fail','Invalid password');
+        }
+    }//end method
+
+    public function logoutHandler(Request $request){
+        Auth::guard('seller')->logout();
+        return redirect()->route('seller.login')->with('fail','Logged out successfully');
+    }//end method
 }
