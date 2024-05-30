@@ -46,7 +46,7 @@
 		<link rel="stylesheet" type="text/css" href="/back/vendors/styles/style.css" />
 		<link rel="stylesheet" href="/extra-assets/jquery-ui-1.13.3/jquery-ui.min.css">
 		<link rel="stylesheet" href="/extra-assets/jquery-ui-1.13.3/jquery-ui.structure.min.css">
-
+		<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 		<style>
 			.swal2-popup {
 				font-size: 0.78rem;
@@ -486,7 +486,7 @@
 
 					@else
 					<li>
-							<a href="calendar.html" class="dropdown-toggle no-arrow">
+							<a href="{{ route('seller.home') }}" class="dropdown-toggle no-arrow {{Route::is('seller.profile') ? 'active' : ''}}">
 								<span class="micon fa fa-home"></span
 								><span class="mtext">Home</span>
 							</a>
@@ -507,9 +507,9 @@
 						
 						<li>
 							<a
-								href=""
-								target="_blank"
-								class="dropdown-toggle no-arrow"
+								href="{{ route('seller.profile')}}"
+								
+								class="dropdown-toggle no-arrow {{Route::is('seller.profile') ? 'active' : ''}}"
 							>
 								<span class="micon fa fa-user"></span>
 								<span class="mtext"

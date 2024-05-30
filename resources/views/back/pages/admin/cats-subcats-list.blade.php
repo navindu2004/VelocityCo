@@ -23,7 +23,7 @@
         }
     });  //ask sir
 
-$(document).on('click','.deleteCategoryBtn',function(){
+$('.deleteCategoryBtn').on('click',function(e){
     e.preventDefault();
     var category_id = $(this).data('id');
     swal.fire({

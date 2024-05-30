@@ -60,7 +60,16 @@ class Seller extends Authenticatable
      */
     protected $casts = [
         'email_verified_at' => 'datetime',
+        'password'=>'hashed',
     ];
+
+    public function getPictureAttribute($value){
+        if( $value ){
+            return asset('/images/users/sellers/'.$value);
+        }else{
+            return asset('/images/users/default-avatar.png');
+        }
+    }
 
     /**
      * The accessors to append to the model's array form.

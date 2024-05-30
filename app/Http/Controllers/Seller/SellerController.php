@@ -296,4 +296,11 @@ public function resetPasswordHandler(Request $request){
     sendEmail($mailConfig);
     return redirect()->route('seller.login')->with('success','Done! Your password has been changed. Use new password to login to system.');
 }
+
+public function profileView(Request $request){
+    $data = [
+        'pageTitle'=>'Profile'
+    ];
+    return view('back.pages.seller.profile',$data);
+}
 }

@@ -24,6 +24,7 @@ Route::prefix('seller')->name('seller.')->group(function(){
         Route::controller(SellerController::class)->group(function(){
             Route::get('/','home')->name('home');
             Route::post('/logout','logoutHandler')->name('logout');
+            Route::get('/profile','profileView')->name('profile');
         });
     });
 });
