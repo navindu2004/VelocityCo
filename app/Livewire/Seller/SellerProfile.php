@@ -5,6 +5,7 @@ namespace App\Livewire\Seller;
 use Livewire\Component;
 use App\Models\Seller;
 
+
 class SellerProfile extends Component
 {
     public $tab = null;

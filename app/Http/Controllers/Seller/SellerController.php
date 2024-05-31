@@ -13,6 +13,9 @@ use Illuminate\Support\Carbon;
 use constGuards;
 use constDefaults;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\File;
+use Mberacall\Kropify\Kropify;
+use Mberecall\Services\Library\Kropify as LibraryKropify;
 
 class SellerController extends Controller
 {
@@ -303,4 +306,16 @@ public function profileView(Request $request){
     ];
     return view('back.pages.seller.profile',$data);
 }
+
+public function changeProfilePicture(Request $request){
+    $seller = Seller::findOrFail(auth('seller')->id());
+    $path = 'images/users/sellers/';
+    $file = $request->file('sellerProfilePictureFile');
+    $old_picture = $seller->getAttributes()['picture'];
+    $filename = 'SELLER_IMG_'.$seller->id.'.jpg';
+
+    // $upload = Kropify::getFile($file,$path,$filename)->maxWoH(325)->save($path);
+    // $infos = $upload->getInfo();
+}
+
 }

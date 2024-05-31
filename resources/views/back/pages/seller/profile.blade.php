@@ -25,3 +25,28 @@
 @livewire('seller.seller-profile')
 
 @endsection
+@push('scripts')
+<script>
+	$('input[type="file"][id="sellerProfilePictureFile"]'.Kropify({
+		preview:'#sellerProfilePicture',
+        viewMode:1,
+        aspectRatio:1,
+        cancelButtonText:'Cancel',
+        resetButtonText:'Reset',
+        cropButtonText:'Crop & update',
+        processURL:'{{ route("seller.change-profile-picture") }}',
+        maxSize:2097152,
+        showLoader:true,
+        success:function(data){
+			if(data.status == 1 ){
+				toastr.success(data.msg);
+			}else{
+				toastr.error(data.msg);
+			}
+          },
+		  errors:function(error, text){
+			console.log(text);
+		  }
+	}));
+</script>
+@endpush

@@ -5,7 +5,7 @@
 		<!-- Basic Page Info -->
 		<meta charset="utf-8" />
 		<title>@yield('pageTitle')</title>
-
+		<meta name="csrf-token" content="{{ csrf_token() }}">
 		<!-- Site favicon -->
 		<link
 			rel="apple-touch-icon"
@@ -72,6 +72,7 @@
 		<link rel="stylesheet" href="/extra-assets/jquery-ui-1.13.3/jquery-ui.theme.min.css">
 		@livewireStyles
         @stack('stylesheets')
+		@kropifyStyles 
 	</head>
 	<body>
 		<div class="pre-loader">
@@ -614,5 +615,6 @@
 	}
 	// ]]>
 </script>
+@kropifyScripts
 </body>
 </html>

@@ -4,8 +4,9 @@
 						<div class="col-xl-4 col-lg-4 col-md-4 col-sm-12 mb-30">
 							<div class="pd-20 card-box height-100-p">
 								<div class="profile-photo">
-									<a href="modal" data-toggle="modal" data-target="#modal" class="edit-avatar"><i class="fa fa-pencil"></i></a>
-									<img src="{{ $seller->picture }}" alt="" class="avatar-photo">
+									<a href="javascript:;" onclick="event.preventDefault();document.getElementById('sellerProfilePictureFile').click();" class="edit-avatar"><i class="fa fa-pencil"></i></a>
+									<img src="{{ $seller->picture }}" alt="" class="avatar-photo" id="sellerProfilePicture">
+                                    <input type="file" name="sellerProfilePictureFile" name="sellerProfilePictureFile" id="sellerProfilePictureFile" class="d-none" style="opacity:0;">
 									
 								</div>
 								<h5 class="text-center h5 mb-0">{{$seller->name}}</h5>
