@@ -26,6 +26,8 @@ Route::prefix('seller')->name('seller.')->group(function(){
             Route::post('/logout','logoutHandler')->name('logout');
             Route::get('/profile','profileView')->name('profile');
             Route::post('/change-profile-picture','changeProfilePicture')->name('change-profile-picture');
+            Route::get('/shop-settings','shopSettings')->name('shop-settings');
+            Route::post('/shop-setup','shopSetup')->name('shop-setup');
         });
     });
 });
