@@ -6,7 +6,7 @@
 						<div class="row">
 							<div class="col-md-6 col-sm-12">
 								<div class="title">
-									<h4>New Product</h4>
+									<h4>Edit Product</h4>
 								</div>
 								<nav aria-label="breadcrumb" role="navigation">
 									<ol class="breadcrumb">
@@ -14,7 +14,7 @@
 											<a href="{{ route('seller.home') }}">Home</a>
 										</li>
 										<li class="breadcrumb-item active" aria-current="page">
-											New Product
+											Edit Product
 										</li>
 									</ol>
 								</nav>
@@ -25,19 +25,20 @@
 						</div>
 					</div>
 
-<form action="{{ route('seller.product.create-product') }}" method="POST" enctype="multipart/form-data" id="addProductForm">
+<form action="{{ route('seller.product.update-product') }}" method="POST" enctype="multipart/form-data" id="updateProductForm">
 @csrf
+<input type="hidden" name="product_id" value="{{ $product->id }}">
 <div class="row pd-10">
     <div class="col-md-8 mb-20">
         <div class="card-box height-100-p pd-20" style="position:relative">
         <div class="form-group">
             <label for=""><b>Product Name:</b></label>
-            <input type="text" class="form-control" name="name" placeholder="Enter product name">
+            <input type="text" class="form-control" name="name" placeholder="Enter product name" value="{{ $product->name }}">
             <span class="text-danger error-text name_error"></span>
         </div>
         <div class="form-group">
             <label for=""><b>Product Summary:</b></label>
-            <textarea id="summary" class="form-control summernote" cols="30" rows="10"></textarea>
+            <textarea id="summary" class="form-control summernote" cols="30" rows="10">{!! $product->summary !!}</textarea>
             <span class="text-danger error-text summary_error"></span>
         </div>
         <div class="form-group">
@@ -53,9 +54,9 @@
             <div class="form-group">
                 <label for=""><b>Category:</b></label>
                 <select name="category" id="category" class="form-control">
-                    <option value="" selected>Not Set</option>
+                    
                     @foreach ($categories as $item)
-                        <option value="{{ $item->id }}">{{ $item->category_name }}</option>
+                        <option value="{{ $item->id }}" {{ $product->category == $item->id ? 'selected' : '' }}>{{ $item->category_name }}</option>
                     @endforeach
                 </select>
                 <span class="text-danger error-text category_error"></span>
@@ -65,6 +66,15 @@
                 <label for=""><b>Sub Category:</b></label>
                 <select name="subcategory" id="subcategory" class="form-control">
                     <option value="" selected>Not Set</option>
+                    @foreach ($subcategories as $item)
+                    <option value="{{ $item->id }}" {{ $item->id == $product->subcategory ? 'selected' : '' }}>{{ $item->subcategory_name }}</option>
+
+                    @if( count($item->children) > 0 )
+                    @foreach ($item->children as $child)
+                    <option value="{{ $child->id }}" {{ $child->id == $product->subcategory ? 'selected' : '' }}>-- {{ $child->subcategory_name }}</option>
+                    @endforeach
+                    @endif
+                    @endforeach
                 </select>
                 <span class="text-danger error-text subcategory_error"></span>
             </div>
@@ -72,12 +82,12 @@
         <div class="card-box min-height-200px pd-20 mb-20">
         <div class="form-group">
                 <label for=""><b>Price:</b><small>In Sri Lankan Rupees (Rs.)</small></label>
-                <input type="text" name="price" class="form-control" placeholder="Eg: 300,000">
+                <input type="text" name="price" class="form-control" placeholder="Eg: 300,000" value="{{ $product->price }}">
                 <span class="text-danger error-text price_error"></span>
             </div>
             <div class="form-group">
                 <label for=""><b>Compare Price:</b><small>Optional</small></label>
-                <input type="text" name="compare_price" class="form-control" placeholder="Eg: 500,000">
+                <input type="text" name="compare_price" class="form-control" placeholder="Eg: 500,000" value="{{$product->compare_price}}">
                 <span class="text-danger error-text compare_price_error"></span>
             </div>
         </div>
@@ -85,23 +95,23 @@
             <div class="form-group">
                 <label for=""><b>Visibility:</b></label>
                 <select name="visibility" id="" class="form-control">
-                    <option value="1" selected>Public</option>
-                    <option value="0">Private</option>
+                    <option value="1" {{ $product->visibility == 1 ? 'selected' : '' }}>Public</option>
+                    <option value="0" {{ $product->visibility == 0 ? 'selected' : '' }}>Private</option>
                 </select>
             </div>
         </div>
     </div>
 </div>
 <div class="form-group">
-    <button class="btn btn-primary" type="submit">Create Product</button>
+    <button class="btn btn-primary" type="submit">Update Product</button>
 </div>
 </form>
 
 @endsection
 @push('scripts')
 <script>
-       //list sub categories according to the selected category
-       $(document).on('change','select#category', function(e){
+    //list sub categories according to the selected category
+    $(document).on('change','select#category', function(e){
     e.preventDefault();
     var category_id = $(this).val();
     var url = "{{ route('seller.product.get-product-category') }}";
@@ -116,7 +126,7 @@
 });
 
     //submit product form
-    $('#addProductForm').on('submit', function(e){
+    $('#updateProductForm').on('submit', function(e){
         e.preventDefault();
         var summary = $('textarea.summernote').summernote('code');
         var form = this;
@@ -137,10 +147,10 @@
             success:function(response){
                 toastr.remove();
                 if( response.status == 1){
-                    $(form)[0].reset();
-                    $('textarea.summernote').summernote('code','');
-                    $('select#subcategory').find('option').not(':first').remove();
-                    $('img#image_preview').attr('src','');
+                    // $(form)[0].reset();
+                    // $('textarea.summernote').summernote('code','');
+                    // $('select#subcategory').find('option').not(':first').remove();
+                    // $('img#image_preview').attr('src','');
                     toastr.success(response.msg);
                 }else{
                     toastr.error(response.msg);

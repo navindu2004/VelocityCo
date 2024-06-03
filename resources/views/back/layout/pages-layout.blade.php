@@ -508,7 +508,7 @@
 								><span class="mtext">Manage Products</span>
 							</a>
 							<ul class="submenu">
-						    <li><a href="{{ route('seller.product.all-products') }}" class="{{ Route::is('seller.product.all-product') ? 'active' : '' }}">All Products</a></li>
+						    <li><a href="{{ route('seller.product.all-products') }}" class="{{ Route::is('seller.product.all-products') ? 'active' : '' }}">All Products</a></li>
 							<li><a href="{{ route('seller.product.add-product') }}" class="{{ Route::is('seller.product.add-product') ? 'active' : '' }}">Add Products</a></li>
 						    </ul>
 						</li>
