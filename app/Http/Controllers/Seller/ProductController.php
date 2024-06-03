@@ -10,8 +10,6 @@ use App\Models\Product;
 use App\Rules\ValidatePrice;
 
 
-
-
 class ProductController extends Controller
 {
     public function addProduct(Request $request){
@@ -62,6 +60,42 @@ class ProductController extends Controller
         ]);
 
         $product_image = null;
-        if
+        if ($request->hasFile('product_image') ){
+            $path = 'images/products/';
+            $file = $request->file('product_image');
+            $filename = 'PIMG_'.time().uniqid().'.'.$file->getClientOriginalExtension();
+            $upload = $file->move(public_path($path),$filename);
+
+            if($upload){
+                $product_image = $filename;
+            }
+        }
+
+        //save product details
+        $product = new Product();
+        $product->user_type = 'seller';
+        $product->seller_id = auth('seller')->id();
+        $product->name = $request->name;
+        $product->summary = $request->summary;
+        $product->category = $request->category;
+        $product->subcategory = $request->subcategory;
+        $product->price = $request->price;
+        $product->compare_price = $request->compare_price;
+        $product->visibility = $request->visibility;
+        $product->product_image = $product_image;
+        $saved = $product->save();
+
+        if( $saved ){
+            return response()->json(['status'=>1,'msg'=>'Product added successfully']);
+        }else{
+            return response()->json(['status'=>0,'msg'=>'Failed to add product']);
+        }
+    }
+
+    public function allProducts(Request $request){
+        $data = [
+            'pageTitle'=>'My Products'
+        ];
+        return view('back.pages.seller.products',$data);
     }
 }

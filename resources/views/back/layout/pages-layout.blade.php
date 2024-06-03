@@ -47,6 +47,7 @@
 		<link rel="stylesheet" href="/extra-assets/jquery-ui-1.13.3/jquery-ui.min.css">
 		<link rel="stylesheet" href="/extra-assets/jquery-ui-1.13.3/jquery-ui.structure.min.css">
 		<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 		<style>
 			.swal2-popup {
 				font-size: 0.78rem;
@@ -70,7 +71,7 @@
 		<link rel="stylesheet" href="/extra-assets/jquery-ui-1.13.3/jquery-ui.min.css">
 		<link rel="stylesheet" href="/extra-assets/jquery-ui-1.13.3/jquery-ui.structure.min.css">
 		<link rel="stylesheet" href="/extra-assets/jquery-ui-1.13.3/jquery-ui.theme.min.css">
-		<link rel="stylesheet" href="/extra-assets/summernote/summernote-bs4.min.css"
+		<link rel="stylesheet" href="/extra-assets/summernote/summernote-bs4.min.css">
 		@livewireStyles
         @stack('stylesheets')
 		@kropifyStyles 

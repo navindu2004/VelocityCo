@@ -102,18 +102,18 @@
 <script>
     //list sub categories according to the selected category
     $(document).on('change','select#category', function(e){
-        e.preventDefault();
-        var category_id = $(this).val();
-        var url = "{{ route('seller.product.get-product-category')}}";
-        if( category_id == '' ){
+    e.preventDefault();
+    var category_id = $(this).val();
+    var url = "{{ route('seller.product.get-product-category')}}";
+    if( category_id == '' ){
+        $("select#subcategory").find("option").not(":first").remove();
+    }else{
+        $.get(url, {category_id:category_id}, function(response){
             $("select#subcategory").find("option").not(":first").remove();
-        }else{
-            $.get(url, {category_id:category_id}, function(response){
-                $("select#subcategory").find("option").not(":first").remove();
-                $("select#subcategory").append(response.data);
-            },'JSON');
-        }
-    });
+            $("select#subcategory").append(response.data);
+        },'JSON');
+    }
+});
 
     //submit product form
     $('#addProductForm').on('submit', function(e){
