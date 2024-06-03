@@ -70,6 +70,7 @@
 		<link rel="stylesheet" href="/extra-assets/jquery-ui-1.13.3/jquery-ui.min.css">
 		<link rel="stylesheet" href="/extra-assets/jquery-ui-1.13.3/jquery-ui.structure.min.css">
 		<link rel="stylesheet" href="/extra-assets/jquery-ui-1.13.3/jquery-ui.theme.min.css">
+		<link rel="stylesheet" href="/extra-assets/summernote/summernote-bs4.min.css"
 		@livewireStyles
         @stack('stylesheets')
 		@kropifyStyles 
@@ -583,6 +584,14 @@
 		<script src="/extra-assets/ijabo/ijaboCropTool.min.js"></script>
 		<!-- <script src="/extra-assets/ijabo/jquery-1.7.1.min.js"></script> -->
 		<script src="/extra-assets/jquery-ui-1.13.3/jquery-ui.min.js"></script>
+		<script src="/extra-assets/summernote/summernote-bs4.min.js"></script>
+		<script>
+			$(document).ready(function(){
+				$('.summernote').summernote({
+					height:200
+				});
+			});
+		</script>
 		<script>
 			window.addEventListener('showToastr', function(event){
 				toastr.remove();

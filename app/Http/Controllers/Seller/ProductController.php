@@ -6,6 +6,10 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Category;
 use App\Models\SubCategory;
+use App\Models\Product;
+use App\Rules\ValidatePrice;
+
+
 
 
 class ProductController extends Controller
@@ -36,5 +40,28 @@ class ProductController extends Controller
             }
         }
         return response()->json(['status'=>1,'data'=>$html]);
+    }//end method
+
+    public function createProduct(Request $request){
+        $request->validate([
+            'name'=>'required|unique:products,name',
+            'summary'=>'required|min:100',
+            'category'=>'required|exists:categories,id',
+            'subcategory'=>'required|exists:sub_categories,id',
+            'product_image'=>'required|mimes:jpg,jpeg,png|max:1024',
+            'price'=>['required',new ValidatePrice],
+            'compare_price'=>['nullable',new ValidatePrice],
+        ],[
+            'name.required'=>'Enter product name',
+            'name.unique'=>'Product name already exists',
+            'summary.required'=>'Enter product summary',
+            'product_image_required'=>'Select product image',
+            'category.required'=>'Select category',
+            'subcategory.required'=>'Select subcategory',
+            'price.required'=>'Enter product price',
+        ]);
+
+        $product_image = null;
+        if
     }
 }

@@ -37,7 +37,7 @@
         </div>
         <div class="form-group">
             <label for=""><b>Product Summary:</b></label>
-            <textarea id="summary" class="form-control" cols="30" rows="10"></textarea>
+            <textarea id="summary" class="form-control summernote" cols="30" rows="10"></textarea>
             <span class="text-danger error-text summary_error"></span>
         </div>
         <div class="form-group">
@@ -113,5 +113,44 @@
                 $("select#subcategory").append(response.data);
             },'JSON');
         }
+    });
+
+    //submit product form
+    $('#addProductForm').on('submit', function(e){
+        e.preventDefault();
+        var summary = $('textarea.summernote').summernote('code');
+        var form = this;
+        var formdata = new FormData(form);
+        formdata.append('summary', summary);
+
+        $.ajax({
+            url: $(form).attr('action'),
+            method: $(form).attr('method'),
+            data: formdata,
+            processData: false,
+            contentType: false,
+            beforeSend:function(){
+                toastr.remove();
+                $(form).find('.error-text').text('');
+            },
+            success:function(response){
+                toastr.remove();
+                if( response.status == 1){
+                    $(form)[0].reset();
+                    $('textarea.summernote').summernote('code','');
+                    $('select#subcategory').find('option').not(':first').remove();
+                    $('img#image_preview').attr('src','');
+                    toastr.success(response.msg);
+                }else{
+                    toastr.error(response.msg);
+                }
+            },
+            error:function(response){
+                toastr.remove();
+                $.each( response.responseJSON.errors, function(prefix, val){
+                    $(form).find('span.'+prefix+'_error').text(val[0]);
+                });
+            }
+        });
     });
 </script>
