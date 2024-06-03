@@ -499,6 +499,17 @@
 								><span class="mtext">Invoice</span>
 							</a>
 						</li>
+
+						<li class="dropdown">
+							<a href="javascript:;" class="dropdown-toggle {{ Route::is('seller.product.*') ? 'active' : '' }}" data-option="on">
+								<span class="micon bi bi-bag"></span
+								><span class="mtext">Manage Products</span>
+							</a>
+							<ul class="submenu">
+						    <li><a href="{{ route('seller.product.all-products') }}" class="{{ Route::is('seller.product.all-product') ? 'active' : '' }}">All Products</a></li>
+							<li><a href="{{ route('seller.product.add-product') }}" class="{{ Route::is('seller.product.add-product') ? 'active' : '' }}">Add Products</a></li>
+						    </ul>
+						</li>
 						<li>
 							<div class="dropdown-divider"></div>
 						</li>
@@ -551,12 +562,7 @@
                     @yield('content')
 				</div>
 				</div>
-				<div class="footer-wrap pd-20 mb-20 card-box">
-					DeskApp - Bootstrap 4 Admin Template By
-					<a href="https://github.com/dropways" target="_blank"
-						>Ankit Hingarajiya</a
-					>
-				</div>
+				
 			</div>
 		</div>
 		

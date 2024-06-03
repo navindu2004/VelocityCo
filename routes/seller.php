@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Seller\SellerController;
+use App\Http\Controllers\Seller\ProductController;
 
 Route::prefix('seller')->name('seller.')->group(function(){
 
@@ -29,5 +30,15 @@ Route::prefix('seller')->name('seller.')->group(function(){
             Route::get('/shop-settings','shopSettings')->name('shop-settings');
             Route::post('/shop-setup','shopSetup')->name('shop-setup');
         });
-    });
+
+        //product routes
+        Route::prefix('product')->name('product.')->group(function(){
+            Route::controller(ProductController::class)->group(function(){
+                Route::get('/all','allProducts')->name('all-products');
+                Route::get('/add','addProduct')->name('add-product');
+                Route::get('/get-product-category','getProductCategory')->name('get-product-category');
+                Route::post('/create','createProduct')->name('create-product');
+            });
+        }); 
+        });
 });
