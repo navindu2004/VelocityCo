@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\File;
 use App\Models\Category;
 use \Cviebrock\EloquentSluggable\Services\SlugService;
 use App\Models\SubCategory;
+use Illuminate\Support\Facades\Storage;
 
 class CategoriesController extends Controller
 {
@@ -161,13 +162,28 @@ public function storeSubCategory(Request $request){
         'parent_category.exists'=>':Attribute does not exist in categories table',
         'subcategory_name.required'=>':Attribute is required',
         'subcategory_name.min'=>':Attribute must be at least 5 characters',
-        'subcategory_name.unique'=>':Attribute already exists'
+        'subcategory_name.unique'=>':Attribute already exists',
+        'subcategory_image' => 'required|image|mimes:jpeg,png,jpg,svg',
     ]);
 
     $subcategory = new SubCategory();
     $subcategory->category_id = $request->parent_category;
     $subcategory->subcategory_name = $request->subcategory_name;
     $subcategory->is_child_of = $request->is_child_of;
+
+    if($request->hasFile('subcategory_image')) {
+        $path = 'images/subcategories/';
+        $file = $request->file('subcategory_image');
+        $filename = uniqid().'_'.$file->getClientOriginalExtension();
+        // Ensure the directory exists
+        if (!Storage::disk('public')->exists($path)) {
+            Storage::disk('public')->makeDirectory($path);
+        }
+        Storage::disk('public')->put($path. '/'. $filename, file_get_contents($file));
+
+        $subcategory->subcategory_image = $filename;
+    }
+
     $saved = $subcategory->save();
 
     if($saved){
@@ -203,8 +219,31 @@ public function updateSubCategory(Request $request){
         'parent_category.exists'=>':Attribute does not exist in categories table',
         'subcategory_name.required'=>':Attribute is required',
         'subcategory_name.min'=>':Attribute must be at least 5 characters',
-        'subcategory_name.unique'=>':Attribute already exists'
+        'subcategory_name.unique'=>':Attribute already exists',
+        'subcategory_image' => 'nullable|image|mimes:jpeg,png,jpg,svg',
     ]);
+
+    if($request->hasFile('subcategory_image')) {
+        $path = 'images/subcategories/';
+        $file = $request->file('subcategory_image');
+        $filename = uniqid().'_'.$file->getClientOriginalExtension();
+
+
+        // Ensure the directory exists
+        if (!Storage::disk('public')->exists($path)) {
+            Storage::disk('public')->makeDirectory($path);
+        }
+
+       // Optionally, delete the old image if it exists
+       if($subcategory->subcategory_image && Storage::disk('public')->exists($path.'/'.$subcategory->subcategory_image)){
+        Storage::disk('public')->delete($path.'/'.$subcategory->subcategory_image);
+    }
+
+    // Store the new file
+    Storage::disk('public')->put($path. '/'. $filename, file_get_contents($file));
+
+    $subcategory->subcategory_image = $filename;
+}
 
     //check if this sub category has children
     if( $subcategory->children->count() && $request->is_child_of !=0){

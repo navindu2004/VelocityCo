@@ -15,7 +15,8 @@ class SubCategory extends Model
         'subcategory_name',
         'subcategory_slug',
         'is_child_of',
-        'ordering'
+        'ordering',
+        'subcategory_image',
     ];
 
     public function sluggable(): array

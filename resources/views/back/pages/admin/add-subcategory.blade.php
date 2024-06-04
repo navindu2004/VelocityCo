@@ -77,9 +77,17 @@
                                    {{ $message }}
                                 </span>
                             @enderror
-                        </div>
-                        
+                        </div>     
                     </div>
+                    <div class="form-group">
+                            <label for="">Sub Category Image</label>
+                            <input type="file" name="subcategory_image" id="" class="form-control">
+                            @error('subcategory_image')
+                                <span class="text-danger ml-2">
+                                   {{ $message }}
+                                </span>
+                            @enderror
+                        </div>
                 </div>
                 <button type="submit" class="btn btn-primary">CREATE</button>
             </form>

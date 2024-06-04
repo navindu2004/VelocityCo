@@ -81,6 +81,7 @@
                 <table class="table table-borderless table-striped">
                     <thead class="bg-secondary text-white">
                         <tr>
+                            <th>Sub Category Image</th>
                             <th>Sub Category name</th>
                             <th>Category name</th>
                             <th>Child Sub Categories</th>
@@ -92,6 +93,11 @@
                     @forelse($subcategories as $item)
 
                         <tr data-index="{{ $item->id }}" data-ordering="{{ $item->ordering }}">
+                        <td>
+                                <div class="avatar mr-2">
+                                <img src="{{ asset('images/subcategories/'. $item->subcategory_image) }}" width="50" height="50" alt="">
+                                </div>
+                        </td>
                             <td>
                                 {{$item->subcategory_name}}
                             </td>
