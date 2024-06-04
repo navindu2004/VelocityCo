@@ -14,7 +14,7 @@
 								<img src="/front/img/dealership01.jpg" alt="">
 							</div>
 							<div class="shop-body">
-								<h3>Yoshino<br>Motors</h3>
+								<h3>Osaka<br>Motors</h3>
 								<a href="#" class="cta-btn">Shop now <i class="fa fa-arrow-circle-right"></i></a>
 							</div>
 						</div>
@@ -67,12 +67,13 @@
 						<div class="section-title">
 							<h3 class="title">New Products</h3>
 							<div class="section-nav">
+								@if (count(get_categories()) > 0)
 								<ul class="section-tab-nav tab-nav">
-									<li class="active"><a data-toggle="tab" href="#tab1">SUVs</a></li>
-									<li><a data-toggle="tab" href="#tab1">Sedans</a></li>
-									<li><a data-toggle="tab" href="#tab1">Convertible</a></li>
-									<li><a data-toggle="tab" href="#tab1">Electric (EVs)</a></li>
+									@foreach (get_categories() as $category)
+									<li class="active"><a data-toggle="tab" href="#tab1">{{ $category->category_name}}</a></li>
+									@endforeach
 								</ul>
+								@endif
 							</div>
 						</div>
 					</div>

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Category;
 
 class FrontEndController extends Controller
 {
@@ -12,4 +13,6 @@ class FrontEndController extends Controller
         ];
         return view('front.pages.home', $data);
     }
+
+    
 }

@@ -8,7 +8,7 @@
                 </div>
                 <div class="pull-right">
                     <a href="{{ route('admin.manage-categories.add-category')}}" class="btn btn-primary btn-sm" type="button">
-                        <i class="fa fa-plus"></i> Add Category (Brand)
+                        <i class="fa fa-plus"></i> Add Category (Type)
                     </a>
                 </div>
             </div>
@@ -73,7 +73,7 @@
                 </div>
                 <div class="pull-right">
                     <a href="{{ route('admin.manage-categories.add-subcategory') }}" class="btn btn-primary btn-sm" type="button">
-                        <i class="fa fa-plus"></i> Add New Sub Category (Type of vehicle)
+                        <i class="fa fa-plus"></i> Add New Sub Category (Brand, Version, YOM)
                     </a>
                 </div>
             </div>

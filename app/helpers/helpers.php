@@ -44,3 +44,14 @@ if( !function_exists('get_categories') ){
         return !empty($categories) ? $categories : [];
     }
 }
+
+/**GET FRONT END SUBCATEGORIES */
+if( !function_exists('get_subcategories') ){
+    function get_subcategories($category_id, $is_child_of = 0){
+        $subcategories = SubCategory::where('category_id',$category_id)
+                                    ->where('is_child_of',$is_child_of)
+                                    ->orderBy('subcategory_name','asc')
+                                    ->get();
+        return !empty($subcategories) ? $subcategories : [];
+    }
+}

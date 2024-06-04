@@ -68,7 +68,7 @@
                             <a href="#" class="block py-2 pl-3 pr-4 text-gray-700 border-b border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 lg:hover:text-purple-700 lg:p-0 lg:dark:hover:text-white lg:dark:hover:bg-transparent">My Assets</a>
                         </li>
                         <li>
-                            <a href="{{ route('dealerships') }}" class="block py-2 pl-3 pr-4 text-gray-700 border-b border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 lg:hover:text-purple-700 lg:p-0 lg:dark:hover:text-white lg:dark:hover:bg-transparent">Dealerships</a>
+                            <a href="{{ route('home-page') }}" class="block py-2 pl-3 pr-4 text-gray-700 border-b border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 lg:hover:text-purple-700 lg:p-0 lg:dark:hover:text-white lg:dark:hover:bg-transparent">Dealerships</a>
                         </li>
                         <li>
                             <a href="#" class="block py-2 pl-3 pr-4 text-gray-700 border-b border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 lg:hover:text-purple-700 lg:p-0 lg:dark:hover:text-white lg:dark:hover:bg-transparent">Contact Us</a>
