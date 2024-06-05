@@ -89,4 +89,11 @@ Route::view('/example-page','example-page');
 Route::view('/example-auth','example-auth');
 Route::view('/example-frontend','example-frontend');
 
+Route::get('/home/purchase', function () {
+    return view('front.pages.purchase');
+});
+
+Route::get('/home/checkout', function () {
+    return view('front.pages.checkout');
+});
 

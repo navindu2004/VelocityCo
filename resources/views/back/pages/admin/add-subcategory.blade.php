@@ -79,6 +79,7 @@
                             @enderror
                         </div>     
                     </div>
+                    <div class="col-md-7">
                     <div class="form-group">
                             <label for="">Sub Category Image</label>
                             <input type="file" name="subcategory_image" id="" class="form-control">
@@ -87,7 +88,30 @@
                                    {{ $message }}
                                 </span>
                             @enderror
-                        </div>
+                    </div>
+                    </div>
+                    <div class="col-md-7">
+                    <div class="form-group">
+                        <label for="">Sub Category Description</label>
+                        <textarea name="subcategory_desc" id="" cols="30" rows="10" class="form-control" placeholder="Enter sub category description">{{ old('subcategory_desc') }}</textarea>
+                        @error('subcategory_desc')
+                            <span class="text-danger ml-2">
+                               {{ $message }}
+                            </span>
+                        @enderror
+                    </div>
+                    </div>
+                    <div class="col-md-7">
+                    <div class="form-group">
+                        <label for="">Sub Category Price</label>
+                        <input type="text" name="subcategory_price" id="" class="form-control" placeholder="Enter sub category price (In Rupees)" value="{{ old('subcategory_price') }}">
+                        @error('subcategory_price')
+                            <span class="text-danger ml-2">
+                               {{ $message }}
+                            </span>
+                        @enderror
+                    </div>
+                    </div>
                 </div>
                 <button type="submit" class="btn btn-primary">CREATE</button>
             </form>

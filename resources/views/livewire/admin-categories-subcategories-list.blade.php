@@ -84,6 +84,8 @@
                             <th>Sub Category Image</th>
                             <th>Sub Category name</th>
                             <th>Category name</th>
+                            <th>Price</th>
+                            <th>Description</th>
                             <th>Child Sub Categories</th>
                             <th>Actions</th>
                         </tr>
@@ -103,6 +105,12 @@
                             </td>
                             <td>
                                 {{$item->parentcategory->category_name}}
+                            </td>
+                            <td>
+                                Rs.{{ $item->subcategory_price }}
+                            </td>
+                            <td>
+                            {{ $item->subcategory_description }}
                             </td>
                             <td>
                                 @if ($item->children->count() > 0)

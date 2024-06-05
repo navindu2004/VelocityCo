@@ -17,6 +17,8 @@ class SubCategory extends Model
         'is_child_of',
         'ordering',
         'subcategory_image',
+        'subcategory_price', // Add this line
+        'subcategory_desc',
     ];
 
     public function sluggable(): array

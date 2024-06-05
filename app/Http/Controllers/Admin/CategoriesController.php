@@ -164,6 +164,8 @@ public function storeSubCategory(Request $request){
         'subcategory_name.min'=>':Attribute must be at least 5 characters',
         'subcategory_name.unique'=>':Attribute already exists',
         'subcategory_image' => 'required|image|mimes:jpeg,png,jpg,svg',
+        'subcategory_price' => 'required|numeric',
+        'subcategory_desc' => 'required|string',
     ]);
 
     $subcategory = new SubCategory();
@@ -221,6 +223,8 @@ public function updateSubCategory(Request $request){
         'subcategory_name.min'=>':Attribute must be at least 5 characters',
         'subcategory_name.unique'=>':Attribute already exists',
         'subcategory_image' => 'nullable|image|mimes:jpeg,png,jpg,svg',
+        'subcategory_price' => 'required|numeric',
+        'subcategory_desc' => 'required|string',
     ]);
 
     if($request->hasFile('subcategory_image')) {
