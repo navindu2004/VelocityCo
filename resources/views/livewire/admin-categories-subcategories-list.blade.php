@@ -107,10 +107,10 @@
                                 {{$item->parentcategory->category_name}}
                             </td>
                             <td>
-                                Rs.{{ $item->subcategory_price }}
+                                Rs.{{ number_format($item->subcategory_price, 2) }}
                             </td>
                             <td>
-                            {{ $item->subcategory_description }}
+                            {{ Str::limit($item->subcategory_desc, 50) }}
                             </td>
                             <td>
                                 @if ($item->children->count() > 0)

@@ -164,14 +164,16 @@ public function storeSubCategory(Request $request){
         'subcategory_name.min'=>':Attribute must be at least 5 characters',
         'subcategory_name.unique'=>':Attribute already exists',
         'subcategory_image' => 'required|image|mimes:jpeg,png,jpg,svg',
-        'subcategory_price' => 'required|numeric',
-        'subcategory_desc' => 'required|string',
+        'subcategory_price' => 'nullable|numeric',
+        'subcategory_desc' => 'nullable|string',
     ]);
 
     $subcategory = new SubCategory();
     $subcategory->category_id = $request->parent_category;
     $subcategory->subcategory_name = $request->subcategory_name;
     $subcategory->is_child_of = $request->is_child_of;
+    $subcategory->subcategory_price = $request->subcategory_price;
+    $subcategory->subcategory_desc = $request->subcategory_desc;
 
     if($request->hasFile('subcategory_image')) {
         $path = 'images/subcategories/';
@@ -223,8 +225,8 @@ public function updateSubCategory(Request $request){
         'subcategory_name.min'=>':Attribute must be at least 5 characters',
         'subcategory_name.unique'=>':Attribute already exists',
         'subcategory_image' => 'nullable|image|mimes:jpeg,png,jpg,svg',
-        'subcategory_price' => 'required|numeric',
-        'subcategory_desc' => 'required|string',
+        'subcategory_price' => 'nullable|numeric',
+        'subcategory_desc' => 'nullable|string',
     ]);
 
     if($request->hasFile('subcategory_image')) {
@@ -257,6 +259,8 @@ public function updateSubCategory(Request $request){
         $subcategory->category_id = $request->parent_category;
         $subcategory->subcategory_name = $request->subcategory_name;
         $subcategory->is_child_of = $request->is_child_of;
+        $subcategory->subcategory_price = $request->subcategory_price;
+        $subcategory->subcategory_desc = $request->subcategory_desc;
         $saved = $subcategory->save();
 
         if( $saved ){

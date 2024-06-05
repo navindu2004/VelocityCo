@@ -91,26 +91,26 @@
                     </div>
                     </div>
                     <div class="col-md-7">
-                    <div class="form-group">
-                        <label for="">Sub Category Description</label>
-                        <textarea name="subcategory_desc" id="" cols="30" rows="10" class="form-control" placeholder="Enter sub category description">{{ old('subcategory_desc') }}</textarea>
-                        @error('subcategory_desc')
-                            <span class="text-danger ml-2">
-                               {{ $message }}
-                            </span>
-                        @enderror
-                    </div>
+                        <div class="form-group">
+                            <label for="">Sub Category Price</label>
+                            <input type="number" class="form-control" name="subcategory_price" placeholder="Enter sub category price" value="{{ old('subcategory_price') }}">
+                            @error('subcategory_price')
+                                <span class="text-danger ml-2">
+                                   {{ $message }}
+                                </span>
+                            @enderror
+                        </div>
                     </div>
                     <div class="col-md-7">
-                    <div class="form-group">
-                        <label for="">Sub Category Price</label>
-                        <input type="text" name="subcategory_price" id="" class="form-control" placeholder="Enter sub category price (In Rupees)" value="{{ old('subcategory_price') }}">
-                        @error('subcategory_price')
-                            <span class="text-danger ml-2">
-                               {{ $message }}
-                            </span>
-                        @enderror
-                    </div>
+                        <div class="form-group">
+                            <label for="">Sub Category Description</label>
+                            <input type="text" class="form-control" name="subcategory_desc" placeholder="Enter sub category description" value="{{ old('subcategory_desc') }}">
+                            @error('subcategory_desc')
+                                <span class="text-danger ml-2">
+                                   {{ $message }}
+                                </span>
+                            @enderror
+                        </div>
                     </div>
                 </div>
                 <button type="submit" class="btn btn-primary">CREATE</button>
