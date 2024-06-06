@@ -14,6 +14,8 @@ use App\Http\Controllers\FrontEndController;
 
 use App\Http\Controllers\CartController;
 
+use App\Http\Controllers\PaymentController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -108,3 +110,5 @@ Route::post('/cart/add', [CartController::class, 'addToCart'])->name('cart.add')
 Route::delete('/cart/remove/{id}', [CartController::class, 'removeFromCart'])->name('cart.remove');
 
 Route::get('/checkout', [CartController::class, 'checkout'])->name('checkout');
+
+Route::post('/pay',[PaymentController::class, 'pay'])->name('payment');

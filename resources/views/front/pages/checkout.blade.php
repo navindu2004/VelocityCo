@@ -189,7 +189,12 @@
 								I've read and accept the <a href="#">terms &amp; conditions</a>
 							</label>
 						</div>
-						<a href="#" class="primary-btn order-submit">Place order</a>
+                        <form action="{{ route('payment') }}" method="POST">
+                        @csrf
+                        <input type="hidden" name="amount" value="{{ $details['price'] }}">
+                        <input type="hidden" name="product_name" value="{{ $details['name'] }}">
+                        <button type="submit" class="primary-btn order-submit">Place order and pay with PayPal</button>
+                        </form>
 					</div>
 					<!-- /Order Details -->
 				</div>
