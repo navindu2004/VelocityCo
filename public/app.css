@@ -22,6 +22,9 @@
  h1, h2, h3, h4, h5, h6 {
    font-family: "Roboto Condensed", sans-serif;
  }
+ .add-to-cart-btn {
+  cursor: pointer;
+}
  
  h2 {
    font-size: 26px;

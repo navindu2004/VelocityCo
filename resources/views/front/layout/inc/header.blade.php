@@ -25,7 +25,7 @@
 						<!-- LOGO -->
 						<div class="col-md-3">
 							<div class="header-logo">
-								<a href="#" class="logo">
+								<a href="{{route('home-page')}}" class="logo">
 									<img src="{{ asset('template/landwind-main/images/Black Pink Bold Elegant Monogram Personal Brand Logo(2).svg')}} " alt="" height="125" width="125">
 								</a>
 							</div>
@@ -74,13 +74,17 @@
 											@foreach(session('cart') as $id => $item)
 											<div class="product-widget">
 												<div class="product-img">
-													<img src="/front/img/product01.png" alt="">
+													<img src="{{ $item['image']?? 'public/images/categories/1717481936_sedan-wlu.png' }}" alt="">
 												</div>
 												<div class="product-body">
 													<h3 class="product-name"><a href="#">{{ $item['name'] }}</a></h3>
 													<h4 class="product-price"><span class="qty">1x</span>Rs.{{ $item['price'] }}</h4>
 												</div>
-												<button class="delete"><i class="fa fa-close"></i></button>
+												<form action="{{ route('cart.remove', ['id' => $id] )}}" method="POST">
+                                                @csrf
+												@method('DELETE')
+												<button type="submit" class="delete"><i class="fa fa-close"></i></button>
+												</form>
 											</div>
 											@endforeach
 										</div>
@@ -92,19 +96,14 @@
 											<a href="#">View Cart</a>
 											<a href="#">Checkout  <i class="fa fa-arrow-circle-right"></i></a>
 										</div>
-									</div>
+									
 									@endif
+									</div>
 								</div>
 								<!-- /Cart -->
 
-								<!-- Menu Toogle -->
-								<div class="menu-toggle">
-									<a href="#">
-										<i class="fa fa-bars"></i>
-										<span>Menu</span>
-									</a>
-								</div>
-								<!-- /Menu Toogle -->
+								
+						
 							</div>
 						</div>
 						<!-- /ACCOUNT -->

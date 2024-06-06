@@ -9,7 +9,7 @@
 				<div class="row">
 					<div class="col-md-12">
 						<ul class="breadcrumb-tree">
-							<li><a href="#">Home</a></li>
+							<li><a href="{{route('home-page')}}">Home</a></li>
 							<li><a href="#">All Categories</a></li>
 							<li><a href="#">{{ $subcategory->category->category_name }}</a></li>
 							<li class="active">{{ $subcategory->subcategory_name }}</li>
@@ -98,6 +98,7 @@
                                 <input type="hidden" name="name" value="{{ $subcategory->subcategory_name }}">
                                 <input type="hidden" name="price" value="{{ $subcategory->subcategory_price }}">
                                 <input type="hidden" name="category" value="{{ $subcategory->category->category_name }}">
+								<input type="hidden" name="image" value="{{ asset('storage/images/subcategories/'. $subcategory->subcategory_image) }}">
 								<button type="submit" class="add-to-cart-btn"><i class="fa fa-shopping-cart"></i> Add to cart</button>
 								</form>
 							</div>

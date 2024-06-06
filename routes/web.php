@@ -105,3 +105,4 @@ Route::get('/home/purchase/{id}', [FrontEndController::class, 'showPurchase'])->
 
 Route::post('/cart/add', [CartController::class, 'addToCart'])->name('cart.add');
 
+Route::delete('/cart/remove/{id}', [CartController::class, 'removeFromCart'])->name('cart.remove');

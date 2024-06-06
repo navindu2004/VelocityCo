@@ -12,8 +12,15 @@
 		<!-- Google font -->
 		<link href="https://fonts.googleapis.com/css?family=Montserrat:400,500,700" rel="stylesheet">
 
+		<style>
+    .dropdown-toggle {
+        cursor: pointer;
+    }
+</style>
+
 		<!-- Bootstrap -->
 		<link type="text/css" rel="stylesheet" href="/front/css/bootstrap.min.css"/>
+		
 
 		<!-- Slick -->
 		<link type="text/css" rel="stylesheet" href="/front/css/slick.css"/>

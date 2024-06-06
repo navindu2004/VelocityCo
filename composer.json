@@ -16,7 +16,8 @@
         "livewire/livewire": "^3.5",
         "livewire/volt": "^1.6",
         "mberecall/kropify-laravel": "^2.1",
-        "openai-php/laravel": "^0.8.1"
+        "openai-php/laravel": "^0.8.1",
+        "stripe/stripe-php": "^14.9"
     },
     "require-dev": {
         "fakerphp/faker": "^1.9.1",
