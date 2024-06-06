@@ -126,30 +126,30 @@
 						<div class="section-title text-center">
 							<h3 class="title">Your Order</h3>
 						</div>
+                        @if(session('cart'))
 						<div class="order-summary">
 							<div class="order-col">
 								<div><strong>PRODUCT</strong></div>
 								<div><strong>TOTAL</strong></div>
 							</div>
+                            @foreach(session('cart') as $id => $details)
 							<div class="order-products">
 								<div class="order-col">
-									<div>1x Product Name Goes Here</div>
-									<div>$980.00</div>
-								</div>
-								<div class="order-col">
-									<div>2x Product Name Goes Here</div>
-									<div>$980.00</div>
+									<div>{{ $details['name'] }}</div>
+									<div>Rs. {{ $details['price'] }}</div>
 								</div>
 							</div>
+                            @endforeach
 							<div class="order-col">
-								<div>Shiping</div>
+								<div>Shipping</div>
 								<div><strong>FREE</strong></div>
 							</div>
 							<div class="order-col">
 								<div><strong>TOTAL</strong></div>
-								<div><strong class="order-total">$2940.00</strong></div>
+								<div><strong class="order-total">Rs. {{ $details['price'] }}</strong></div>
 							</div>
 						</div>
+                        @endif
 						<div class="payment-method">
 							<div class="input-radio">
 								<input type="radio" name="payment" id="payment-1">

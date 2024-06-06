@@ -28,4 +28,12 @@ public function removeFromCart($id)
     session(['cart' => $cart]);
     return redirect()->back()->with('success', 'Item removed from cart');
 }
+
+
+public function checkout()
+{
+    $cart = session()->get('cart', []);
+    return view('front.pages.checkout', ['cart' => $cart]);
+}
+
 }
