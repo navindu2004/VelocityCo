@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Category;
+use App\Models\SubCategory;
 
 class FrontEndController extends Controller
 {
@@ -14,5 +15,11 @@ class FrontEndController extends Controller
         ];
         return view('front.pages.home', $data);
     }
+
+    public function showPurchase($id)
+{
+    $subcategory = SubCategory::with('category')->findOrFail($id);
+    return view('front.pages.purchase', ['subcategory' => $subcategory]);
+}
     
 }

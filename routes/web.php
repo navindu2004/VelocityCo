@@ -99,3 +99,5 @@ Route::get('/home/checkout', function () {
 
 Route::get('/home', [FrontEndController::class,'homePage'])->name('home-page');
 
+Route::get('/home/purchase/{id}', [FrontEndController::class, 'showPurchase'])->name('home.purchase');
+

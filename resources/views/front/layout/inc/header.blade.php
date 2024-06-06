@@ -26,7 +26,7 @@
 						<div class="col-md-3">
 							<div class="header-logo">
 								<a href="#" class="logo">
-									<img src="template/landwind-main/images/Black Pink Bold Elegant Monogram Personal Brand Logo(2).svg" alt="" height="125" width="125">
+									<img src="{{ asset('template/landwind-main/images/Black Pink Bold Elegant Monogram Personal Brand Logo(2).svg')}} " alt="" height="125" width="125">
 								</a>
 							</div>
 						</div>

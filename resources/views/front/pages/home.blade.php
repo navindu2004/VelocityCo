@@ -116,7 +116,9 @@
                                     </div>
                                 </div>
                                 <div class="add-to-cart">
-                                    <button class="add-to-cart-btn"><i class="fa fa-shopping-cart"></i> add to cart</button>
+                                  <a href="{{ route('home.purchase', ['id' => $subcategory->id]) }}" class="add-to-cart-btn">
+                                     <i class="fa fa-shopping-cart"></i>View Vehicle
+                                  </a>
                                 </div>
                             </div>
                         @endforeach
