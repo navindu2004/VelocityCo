@@ -97,5 +97,5 @@ Route::get('/home/checkout', function () {
     return view('front.pages.checkout');
 });
 
-Route::get('/', [FrontEndController::class,'homePage'])->name('home-page');
+Route::get('/home', [FrontEndController::class,'homePage'])->name('home-page');
 

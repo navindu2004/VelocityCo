@@ -178,7 +178,7 @@ public function storeSubCategory(Request $request){
     if($request->hasFile('subcategory_image')) {
         $path = 'images/subcategories/';
         $file = $request->file('subcategory_image');
-        $filename = uniqid().'_'.$file->getClientOriginalExtension();
+        $filename = uniqid().'.'.$file->getClientOriginalExtension();
         // Ensure the directory exists
         if (!Storage::disk('public')->exists($path)) {
             Storage::disk('public')->makeDirectory($path);
@@ -232,7 +232,7 @@ public function updateSubCategory(Request $request){
     if($request->hasFile('subcategory_image')) {
         $path = 'images/subcategories/';
         $file = $request->file('subcategory_image');
-        $filename = uniqid().'_'.$file->getClientOriginalExtension();
+        $filename = uniqid().'.'.$file->getClientOriginalExtension();
 
 
         // Ensure the directory exists

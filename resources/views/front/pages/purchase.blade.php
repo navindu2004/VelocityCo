@@ -23,6 +23,7 @@
 		</div>
 
 
+		
         <div class="section">
 			<!-- container -->
 			<div class="container">
@@ -30,68 +31,28 @@
 				<div class="row">
 					<!-- Product main img -->
 					<div class="col-md-5 col-md-push-2">
-						<div id="product-main-img" class="slick-initialized slick-slider"><button class="slick-prev slick-arrow" aria-label="Previous" type="button" style="display: block;">Previous</button>
-							<div class="slick-list draggable"><div class="slick-track" style="opacity: 1; width: 1832px;"><div class="product-preview slick-slide slick-current slick-active" data-slick-index="0" aria-hidden="false" tabindex="0" style="width: 458px; position: relative; left: 0px; top: 0px; z-index: 999; opacity: 1; overflow: hidden;">
-								<img src="./img/product01.png" alt="">
-							<img role="presentation" src="http://127.0.0.1:5500/img/product01.png" class="zoomImg" style="position: absolute; top: -40.0576px; left: -2.91441px; opacity: 0; width: 600px; height: 600px; border: none; max-width: none; max-height: none;"></div><div class="product-preview slick-slide" data-slick-index="1" aria-hidden="true" tabindex="-1" style="width: 458px; position: relative; left: -458px; top: 0px; z-index: 998; opacity: 0; overflow: hidden;">
-								<img src="./img/product03.png" alt="">
-							<img role="presentation" src="http://127.0.0.1:5500/img/product03.png" class="zoomImg" style="position: absolute; top: 0px; left: 0px; opacity: 0; width: 600px; height: 600px; border: none; max-width: none; max-height: none;"></div><div class="product-preview slick-slide" data-slick-index="2" aria-hidden="true" tabindex="-1" style="width: 458px; position: relative; left: -916px; top: 0px; z-index: 998; opacity: 0; overflow: hidden;">
-								<img src="./img/product06.png" alt="">
-							<img role="presentation" src="http://127.0.0.1:5500/img/product06.png" class="zoomImg" style="position: absolute; top: 0px; left: 0px; opacity: 0; width: 600px; height: 600px; border: none; max-width: none; max-height: none;"></div><div class="product-preview slick-slide" data-slick-index="3" aria-hidden="true" tabindex="-1" style="width: 458px; position: relative; left: -1374px; top: 0px; z-index: 998; opacity: 0; overflow: hidden;">
-								<img src="./img/product08.png" alt="">
-							<img role="presentation" src="http://127.0.0.1:5500/img/product08.png" class="zoomImg" style="position: absolute; top: 0px; left: 0px; opacity: 0; width: 600px; height: 600px; border: none; max-width: none; max-height: none;"></div></div></div>
-
-							
-
-							
-
-							
-						<button class="slick-next slick-arrow" aria-label="Next" type="button" style="display: block;">Next</button></div>
+						<div id="product-main-img" class="slick-initialized slick-slider">
+							<div class="slick-list draggable"><div class="slick-track" style="opacity: 1; width: 458px;"><div class="product-preview slick-slide slick-current slick-active" data-slick-index="0" aria-hidden="false" tabindex="0" style="width: 458px; position: relative; left: 0px; top: 0px; z-index: 999; opacity: 1; overflow: hidden;">
+								<img src="(Image here)" alt="">
+							<img role="presentation" src="(Image here)" class="zoomImg" style="position: absolute; top: -23.3153px; left: -48.8009px; opacity: 1; width: 600px; height: 600px; border: none; max-width: none; max-height: none;"></div></div></div>
+						</div>
 					</div>
 					<!-- /Product main img -->
 
 					<!-- Product thumb imgs -->
 					<div class="col-md-2  col-md-pull-5">
-						<div id="product-imgs" class="slick-initialized slick-slider slick-vertical"><button class="slick-prev slick-arrow" aria-label="Previous" type="button" style="display: block;">Previous</button>
-							<div class="slick-list draggable" style="height: 465px; padding: 0px;"><div class="slick-track" style="opacity: 1; height: 1860px; transform: translate3d(0px, -465px, 0px);"><div class="product-preview slick-slide slick-cloned" data-slick-index="-4" aria-hidden="true" tabindex="-1" style="width: 155px;">
-								<img src="./img/product01.png" alt="">
-							</div><div class="product-preview slick-slide slick-cloned" data-slick-index="-3" aria-hidden="true" tabindex="-1" style="width: 155px;">
-								<img src="./img/product03.png" alt="">
-							</div><div class="product-preview slick-slide slick-cloned" data-slick-index="-2" aria-hidden="true" tabindex="-1" style="width: 155px;">
-								<img src="./img/product06.png" alt="">
-							</div><div class="product-preview slick-slide slick-cloned slick-active" data-slick-index="-1" aria-hidden="false" tabindex="-1" style="width: 155px;">
-								<img src="./img/product08.png" alt="">
-							</div><div class="product-preview slick-slide slick-current slick-active slick-center" data-slick-index="0" aria-hidden="false" tabindex="0" style="width: 155px;">
-								<img src="./img/product01.png" alt="">
-							</div><div class="product-preview slick-slide slick-active" data-slick-index="1" aria-hidden="false" tabindex="0" style="width: 155px;">
-								<img src="./img/product03.png" alt="">
-							</div><div class="product-preview slick-slide" data-slick-index="2" aria-hidden="true" tabindex="0" style="width: 155px;">
-								<img src="./img/product06.png" alt="">
-							</div><div class="product-preview slick-slide" data-slick-index="3" aria-hidden="true" tabindex="-1" style="width: 155px;">
-								<img src="./img/product08.png" alt="">
-							</div><div class="product-preview slick-slide slick-cloned slick-center" data-slick-index="4" aria-hidden="true" tabindex="-1" style="width: 155px;">
-								<img src="./img/product01.png" alt="">
-							</div><div class="product-preview slick-slide slick-cloned" data-slick-index="5" aria-hidden="true" tabindex="-1" style="width: 155px;">
-								<img src="./img/product03.png" alt="">
-							</div><div class="product-preview slick-slide slick-cloned" data-slick-index="6" aria-hidden="true" tabindex="-1" style="width: 155px;">
-								<img src="./img/product06.png" alt="">
-							</div><div class="product-preview slick-slide slick-cloned" data-slick-index="7" aria-hidden="true" tabindex="-1" style="width: 155px;">
-								<img src="./img/product08.png" alt="">
+						<div id="product-imgs" class="slick-initialized slick-slider slick-vertical">
+							<div class="slick-list draggable" style="height: 465px; padding: 0px;"><div class="slick-track" style="opacity: 1; height: 155px; transform: translate3d(0px, 0px, 0px);"><div class="product-preview slick-slide slick-current slick-center" data-slick-index="0" aria-hidden="true" tabindex="0" style="width: 155px;">
+								<img src="(Image here)" alt="">
 							</div></div></div>
-
-							
-
-							
-
-							
-						<button class="slick-next slick-arrow" aria-label="Next" type="button" style="display: block;">Next</button></div>
+						</div>
 					</div>
 					<!-- /Product thumb imgs -->
 
 					<!-- Product details -->
 					<div class="col-md-5">
 						<div class="product-details">
-							<h2 class="product-name">product name goes here</h2>
+							<h2 class="product-name">(Subcategory name)</h2>
 							<div>
 								<div class="product-rating">
 									<i class="fa fa-star"></i>
@@ -103,10 +64,10 @@
 								<a class="review-link" href="#">10 Review(s) | Add your review</a>
 							</div>
 							<div>
-								<h3 class="product-price">$980.00 <del class="product-old-price">$990.00</del></h3>
+								<h3 class="product-price">(Subcategory name) <del class="product-old-price">$990.00</del></h3>
 								<span class="product-available">In Stock</span>
 							</div>
-							<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+							<p>(Subcategory description)</p>
 
 							<div class="product-options">
 								<label>

@@ -92,7 +92,7 @@
                         @foreach($category->subcategories as $subcategory)
                             <div class="product">
                                 <div class="product-img">
-                                    <img src="{{ $subcategory->subcategory_image }}" alt="">
+								<img src="{{ asset('storage/images/subcategories/'. $subcategory->subcategory_image) }}" alt="{{ $subcategory->subcategory_name }}">
                                     <div class="product-label">
                                         <span class="sale">-30%</span>
                                         <span class="new">NEW</span>
