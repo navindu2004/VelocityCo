@@ -92,7 +92,14 @@
 										<span class="qty-down">-</span>
 									</div>
 								</div>
-								<button class="add-to-cart-btn"><i class="fa fa-shopping-cart"></i> add to cart</button>
+								<form action="{{ route('cart.add') }}" method="POST">
+                                @csrf
+                                <input type="hidden" name="id" value="{{ $subcategory->id }}">
+                                <input type="hidden" name="name" value="{{ $subcategory->subcategory_name }}">
+                                <input type="hidden" name="price" value="{{ $subcategory->subcategory_price }}">
+                                <input type="hidden" name="category" value="{{ $subcategory->category->category_name }}">
+								<button type="submit" class="add-to-cart-btn"><i class="fa fa-shopping-cart"></i> Add to cart</button>
+								</form>
 							</div>
 
 							<ul class="product-btns">

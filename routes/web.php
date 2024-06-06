@@ -12,6 +12,8 @@ use App\Http\Controllers\PasswordResetController;
 
 use App\Http\Controllers\FrontEndController;
 
+use App\Http\Controllers\CartController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -100,4 +102,6 @@ Route::get('/home/checkout', function () {
 Route::get('/home', [FrontEndController::class,'homePage'])->name('home-page');
 
 Route::get('/home/purchase/{id}', [FrontEndController::class, 'showPurchase'])->name('home.purchase');
+
+Route::post('/cart/add', [CartController::class, 'addToCart'])->name('cart.add');
 
