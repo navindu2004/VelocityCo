@@ -9,11 +9,11 @@
 						<div class="col-md-3 col-xs-6">
 							<div class="footer">
 								<h3 class="footer-title">About Us</h3>
-								<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut.</p>
+								<p>Velocity Co is a platform to connect dealerships all around Sri Lanka, and to be a centralised platform for everyone's travel needs.</p>
 								<ul class="footer-links">
-									<li><a href="#"><i class="fa fa-map-marker"></i>1734 Stonecoal Road</a></li>
-									<li><a href="#"><i class="fa fa-phone"></i>+021-95-51-84</a></li>
-									<li><a href="#"><i class="fa fa-envelope-o"></i>email@email.com</a></li>
+									<li><a href="#"><i class="fa fa-map-marker"></i>12 Union Place Colombo</a></li>
+									<li><a href="#"><i class="fa fa-phone"></i>+94-123-456-7899</a></li>
+									<li><a href="#"><i class="fa fa-envelope-o"></i>navindunimnal@gmail.com</a></li>
 								</ul>
 							</div>
 						</div>
@@ -23,10 +23,10 @@
 								<h3 class="footer-title">Categories</h3>
 								<ul class="footer-links">
 									<li><a href="#">Hot deals</a></li>
-									<li><a href="#">Laptops</a></li>
-									<li><a href="#">Smartphones</a></li>
-									<li><a href="#">Cameras</a></li>
-									<li><a href="#">Accessories</a></li>
+									<li><a href="#">Sedans</a></li>
+									<li><a href="#">SUVs</a></li>
+									<li><a href="#">Convertibles</a></li>
+									<li><a href="#">EVs</a></li>
 								</ul>
 							</div>
 						</div>

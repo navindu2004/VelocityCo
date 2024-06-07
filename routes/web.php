@@ -112,3 +112,6 @@ Route::delete('/cart/remove/{id}', [CartController::class, 'removeFromCart'])->n
 Route::get('/checkout', [CartController::class, 'checkout'])->name('checkout');
 
 Route::post('/pay',[PaymentController::class, 'pay'])->name('payment');
+
+Route::get('/success', [PaymentController::class, 'success'])->name('payment.success');
+Route::get('/error', [PaymentController::class, 'error'])->name('payment.error');
